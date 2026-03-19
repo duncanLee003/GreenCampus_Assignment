@@ -1,0 +1,154 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* scroll down to the comment where I put your names to write ur CSS code for ur html page to keep it organised*/
+
+
+/* setup */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+    
+
+}
+
+a {
+    color: black;
+}
+
+a.active-page {
+    color:green;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+:root{
+    --body-color: #ece4d5;
+    --nav-color: #ece4d5;
+    --side-nav: #314537;
+    --text-color: #000000; 
+    --search-bar:#314537;
+    --search-text: #000000;
+}
+
+body{
+    height: 100vh;
+    background-color: var(--body-color);
+
+}
+
+nav{
+    position: fixed;
+    top:0;
+    left: 0;
+    height: 70px;
+    width: 100%;
+    background-color: var(--nav-color);
+}
+
+nav .nav-bar{
+    position: relative;
+    height: 100%;
+    max-width: 1000px;
+    width: 100%;
+    background-color: var(--nav-color);
+    margin: 0 auto;
+    padding: 0 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+nav .nav-bar .logo a{
+    font-size: 25px;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+
+}
+
+.nav-var.logo a::before{
+    content:'';
+    position: absolute;
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+}
+
+.nav-bar .nav-links {
+    display: flex;
+    align-items: center;
+
+}
+
+.nav-bar .nav-links li{
+    margin: 0 10px;
+    list-style: none; 
+
+}
+
+.nav-bar li a{
+    position: relative;
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 10px;
+
+    
+}
+
+.nav-var.li a::before{
+    content:'';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(50%);
+    height: 6px;
+    width: 6px;
+    border-radius: 50%;
+    background-color: var(--text-color);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.nav-links li:hover a::before{
+    opacity: 1;
+
+}
+
+.nav-bar.darkLight-searchBox{
+    display: flex;
+    align-items: center;
+}
+
+
+/* Arek's code for tips.html */
+/* write ur CSS code here*/
+
+
+
+
+/* Jezza's code for resources.html */
+/* write ur CSS code here*/
+
+
+
+
+/* Sifaath's code for aboutus.html */
+/* write ur CSS code here*/
+
+
+
+
+
+/* Duncan's code for home.html */
+
+/* Duncan's code for events.html */
+
+
+
