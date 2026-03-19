@@ -15,7 +15,8 @@
 }
 
 a {
-    color: black;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
 }
 
 a.active-page {
@@ -27,7 +28,7 @@ a.active-page {
 
 :root{
     --body-color: #ece4d5;
-    --nav-color: #ece4d5;
+    --nav-color: #f3efe8;
     --side-nav: #314537;
     --text-color: #000000; 
     --search-bar:#314537;
@@ -133,7 +134,7 @@ nav .nav-bar .logo a{
 
 
 
-/* Jezza's code for resources.html */
+/* Jezza's code for events.html */
 /* write ur CSS code here*/
 
 
@@ -147,8 +148,127 @@ nav .nav-bar .logo a{
 
 
 /* Duncan's code for home.html */
+.container{
+    display: flex;
+    min-height: 80vh;
+    flex-direction: column;
+    gap: 1em;
+    margin: 2em 5em;
+}
 
-/* Duncan's code for events.html */
 
+
+section{
+    flex: 4;
+    display: flex;
+    gap: 1em;
+
+
+}
+
+.firstbox{
+    flex: 1;
+    border: 2px solid #ffffff;
+    margin-top: 10em;
+
+}
+
+.firstbox h1{
+    font-size: 43px;
+    margin-bottom: 1em;
+    margin-left: 2em;
+    font-weight: 400;
+}
+
+.firstbox p{
+    font-size: 20px;
+    margin-bottom: 0.5em;
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+.firstbox button{
+    display: inline-block;
+    font-size: 20px;
+    background-color: #687c5f;
+    color: white;
+    text-decoration: none;
+    border:none;
+    border-radius: 90px;
+    margin-top: 20px;
+    padding: 10px 20px;
+    margin-left: 4em;
+    
+}
+
+.secondbox{
+    flex: 1;
+    border: 2px solid #ffffff;
+
+}
+
+.img{
+    width: 100%;
+
+}
+
+.container2 {
+    position: relative;
+    align-content: center;
+}
+
+.recycleIcon{
+    position: absolute;
+    top: 8px;
+    margin-left: 6em;
+    font-size: 50px;
+    margin-top: 1.5em;
+}
+
+.energyLeafIcon{
+    position: absolute;
+    top: 8px;
+    margin-left: 17em;
+    font-size: 50px;
+    margin-top: 1.5em;
+}
+
+.natureIcon{
+    position: absolute;
+    top: 8px;
+    margin-left: 28em;
+    font-size: 50px;
+    margin-top: 1.5em;
+}
+
+
+@media (max-width: 1000px){
+    section,
+    .container.second section{
+        flex-direction: column;
+    }
+    .container{
+        margin: 1em 2em;
+    }
+    .firstbox h1{
+    margin-left: auto;
+    }
+
+    .firstbox p{
+    margin-left: auto;
+    }
+
+    .firstbox button{
+    margin-left: auto;
+    }
+
+    .img{
+        height: 600px;
+    }
+}
+
+
+
+/* Duncan's code for resources.html */
 
 
