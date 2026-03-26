@@ -41,6 +41,15 @@ body{
 
 }
 
+body.dark{
+    --body-color: #18191A;
+    --nav-color: #242526;
+    --side-nav: #242526;
+    --text-color: #CCC; 
+    --search-bar:#242526;
+
+}
+
 nav{
     position: fixed;
     top:0;
@@ -71,14 +80,7 @@ nav .nav-bar .logo a{
 
 }
 
-.nav-var.logo a::before{
-    content:'';
-    position: absolute;
-    height: 6px;
-    width: 6px;
-    border-radius: 50%;
-    background-color: var(--text-color);
-}
+
 
 .nav-bar .nav-links {
     display: flex;
@@ -86,29 +88,21 @@ nav .nav-bar .logo a{
 
 }
 
-.nav-bar .nav-links li{
-    margin: 0 10px;
-    list-style: none; 
-
-}
-
-.nav-bar li a{
+.nav-links li a{
     position: relative;
     font-size: 17px;
     font-weight: 500;
     color: var(--text-color);
     text-decoration: none;
     padding: 10px;
-
-    
 }
 
-.nav-var.li a::before{
+.nav-links li a::before{
     content:'';
     position: absolute;
     left: 50%;
     bottom: 0;
-    transform: translateX(50%);
+    transform: translateX();
     height: 6px;
     width: 6px;
     border-radius: 50%;
@@ -117,14 +111,72 @@ nav .nav-bar .logo a{
     transition: all 0.3s ease;
 }
 
+.nav-bar .nav-links li{
+    margin: 0 10px;
+    list-style: none; 
+
+}
+
+
+
+
 .nav-links li:hover a::before{
     opacity: 1;
 
 }
 
-.nav-bar.darkLight-searchBox{
+.nav-bar .darkLight-searchBox{
     display: flex;
     align-items: center;
+}
+
+.darkLight-searchBox .dark-light,
+.darkLight-searchBox .searchBox{
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+}
+
+.dark-light i,
+.searchBox i{
+    position: absolute;
+    color: var(--text-color);
+    font-size: 22px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dark-light i.sun{
+    opacity: 0;
+    pointer-events: auto;
+}
+
+.dark-light.active i.sun{
+    opacity: 1;
+    pointer-events: none;
+}
+
+.dark-light.active i.moon{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchBox i.cancel{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.searchBox.active i.cancel{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.searchBox.active i.search{
+    opacity: 0;
+    pointer-events: none;
 }
 
 
@@ -147,7 +199,7 @@ nav .nav-bar .logo a{
 
 
 
-/* Duncan's code for home.html */
+/*----------------------- Duncan's code for home.html------------------------------- */
 .container{
     display: flex;
     min-height: 80vh;
@@ -170,6 +222,7 @@ section{
     flex: 1;
     border: 2px solid #ffffff;
     margin-top: 10em;
+    color:var(--text-color);
 
 }
 
@@ -178,6 +231,7 @@ section{
     margin-bottom: 1em;
     margin-left: 2em;
     font-weight: 400;
+    color:var(--text-color);
 }
 
 .firstbox p{
@@ -185,6 +239,7 @@ section{
     margin-bottom: 0.5em;
     margin-left: 4em;
     margin-right: 4em;
+    color:var(--text-color);
 }
 
 .firstbox button{
@@ -207,39 +262,102 @@ section{
 
 }
 
-.img{
-    width: 100%;
+/* banner */
+
+.container2{
+    display: flex;
+    background-color: #687c5f;
+    border: 2px solid #ffffff;
+    min-height: 48vh;
+    align-items: center;
+    justify-content: center;
 
 }
 
-.container2 {
-    position: relative;
-    align-content: center;
+.banner-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 2px solid #ffffff;
+    gap: 1em;
+
+
+    
+}
+
+.firstbannerCol{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    border: 2px solid #ffffff;
+    max-width: 400px;
+}
+
+.secondbannerCol{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    border: 2px solid #ffffff;
+    max-width: 400px;
+}
+
+.thirdbannerCol{
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    align-items: center;
+    border: 2px solid #ffffff;
+    max-width: 400px;
 }
 
 .recycleIcon{
-    position: absolute;
-    top: 8px;
-    margin-left: 6em;
-    font-size: 50px;
-    margin-top: 1.5em;
+    min-height: 50px;
+    border: 2px solid #ffffff;
 }
 
-.energyLeafIcon{
-    position: absolute;
-    top: 8px;
-    margin-left: 17em;
-    font-size: 50px;
-    margin-top: 1.5em;
+.bulbIcon{
+    min-height: 50px;
+    border: 2px solid #ffffff;
 }
 
-.natureIcon{
-    position: absolute;
-    top: 8px;
-    margin-left: 28em;
-    font-size: 50px;
-    margin-top: 1.5em;
+.treeIcon{
+    min-height: 50px;
+    border: 2px solid #ffffff;
 }
+
+.recycleInfo{
+    font-size: 24px;
+    color: white;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    border: 2px solid #ffffff;
+    min-width: 10px;
+    flex-wrap: wrap;
+
+}
+
+.bulbInfo{
+    font-size: 24px;
+    color: white;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.treeInfo{
+    font-size: 24px;
+    color: white;
+    flex-direction: row;
+    justify-content: space-evenly;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
 
 
 @media (max-width: 1000px){
@@ -262,9 +380,30 @@ section{
     margin-left: auto;
     }
 
-    .img{
-        height: 600px;
+    .banner-content{
+        flex-wrap:wrap;
+
     }
+
+    .menu{
+        position: fixedl;
+        height: 100%;
+        width: 320px;
+        left: 0;
+        top: 0;
+        background-color: var(--side-nav);
+
+
+    }
+
+    .nav-bar .nav-links{
+        flex-direction: column;
+        padding-top: 60px;
+
+    }
+
+    
+
 }
 
 

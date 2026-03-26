@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content ="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
-        <link href='https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined' rel="stylesheet">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
     </head>
     <body>
         <nav>
@@ -14,6 +14,7 @@
                 <span class="logo"><a href="#">GreenCampus</a></span>
 
                 <div class ="menu">
+                    <!--
                     <ul class="nav-links">
                         <li><a href = "index.html" >Home</a></li>
                         <li><a href = "events.html" >Events</a></li>
@@ -22,17 +23,18 @@
                         <li><a href = "aboutus.html" >About Us</a></li>
 
                     </ul> 
+                -->
                 </div>
                 
                 <div class="darkLight-searchBox">
                     <div class = "dark-light">
-                        <i class="material-symbols-outlined">bedtime</i>
-                        <i class="material-symbols-outlined">sunny</i>
+                        <i class='bx bx-moon moon'></i>
+                        <i class='bx bx-sun sun'></i>
                     </div>
 
                     <div class = "searchBox">
-                        <i class="material-symbols-outlined">close</i>
-                        <i class="material-symbols-outlined">search</i>
+                        <i class='bx bx-x cancel'></i>
+                        <i class='bx bx-search search'></i>
                     </div>
                 </div>
 
@@ -41,6 +43,8 @@
 
             </div>
         </nav>
+
+        <script src = "script.js"></script>
 
         <!-- spacing so content isn't hidden behind nav bar-->
         <style>
@@ -69,13 +73,41 @@
         </div>
         
         <div class="container2">
-            <img src = "img/greenBanner.svg" alt = "banner">
-            <div class ="recycleIcon" ><i class="material-symbols-outlined" style="font-size:4em;color:white">recycling</i>  </div>
 
-            <div class ="energyLeafIcon" ><i class="material-symbols-outlined" style="font-size:4em;color:white">energy_savings_leaf</i>  </div>
+            <section class ="banner-content">
 
-            <div class ="natureIcon" ><i class="material-symbols-outlined" style="font-size:4em;color:white">nature_people</i>  </div>
-   
+                <div class="firstbannerCol">
+                    <div class ="recycleIcon" >
+                        <img src = "img/recycling.png" alt = "recycling icon">
+                    </div>
+                    <div class="recycleInfo">
+                        <p>Recycle your waste and reduce environmental impact.</p>
+                    </div>
+                </div>
+
+                <div class="secondbannerCol">
+                    <div class ="bulbIcon" >
+                        <img src = "img/lightbulb.png" alt = "bulb icon">
+                    </div>
+                    <div class="bulbInfo">
+                        <p>Save energy by turning off lights when not in use.</p>
+                    </div>
+                </div>
+
+                <div class="thirdbannerCol">
+                    <div class ="treeIcon" >
+                        <img src = "img/tree.png" alt = "tree icon">
+                    </div>
+                    <div class="treeInfo">
+                        <p>Plant trees and support biodiversity.</p>
+                    </div>
+                </div>
+                
+                
+
+            </section>
+
+
 
 
         </div>
