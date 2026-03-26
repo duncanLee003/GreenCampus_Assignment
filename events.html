@@ -19,6 +19,7 @@
                         <li><a href = "events.html" >Events</a></li>
                         <li><a href = "tips.html" >Tips</a></li>
                         <li><a href = "resources.html" >Resources</a></li>
+                        
                         <li><a href = "aboutus.html" >About Us</a></li>
 
                     </ul> 
@@ -35,9 +36,583 @@
         <style>
             body {padding-top: 70px;}
         </style>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenCampus - Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #d4c4ae;
+        }
 
-        <!-- write code here!-->
-         <h1> Duncan's page</h1>
+        /* hero Section */
+        .hero {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
 
-    </body>
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            color: #1b5e20;
+            margin-bottom: 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* Events Grid */
+        .events-grid {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 25px;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+        }
+
+        .event-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .event-info {
+            padding: 18px;
+        }
+
+        .event-date {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+            font-size: 0.9rem;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+
+        .event-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #1b5e20;
+            margin-bottom: 8px;
+        }
+
+        .event-location {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 12px;
+        }
+
+        .event-description {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .event-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            color: #2e7d32;
+        }
+
+        /* Bottom Section */
+        .bottom-section {
+            max-width: 1200px;
+            margin: 60px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 30px;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .category-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .featured-event {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .calendar-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            font-weight: 600;
+            font-size: 1.3rem;
+            color: #1b5e20;
+        }
+
+        .calendar-header span:last-child {
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .calendar-header span:last-child:hover {
+            transform: scale(1.2);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            text-align: center;
+            padding: 10px 5px;
+            font-size: 0.95rem;
+        }
+
+        th {
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        .calendar-day {
+            height: 38px;
+            width: 38px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 3px auto;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .calendar-day:hover {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        .calendar-day.today {
+            background-color: #2e7d32;
+            color: white;
+        }
+
+        .calendar-day.selected {
+            background-color: #4caf50;
+            color: white;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.3);
+        }
+
+        /* Illustration */
+        .illustration {
+            margin: 50px auto;
+            text-align: center;
+            max-width: 1200px;
+            padding: 0 20px;
+        }
+
+        .illustration img {
+            max-height: 280px;
+            border-radius: 12px;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background: linear-gradient(135deg, #1b5e20, #2e7d32);
+            color: white;
+            padding: 60px 20px;
+            margin-top: 80px;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .contact-form {
+            flex: 1;
+        }
+
+        .contact-form h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: #1b5e20;
+            color: white;
+            padding: 40px 20px 30px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+
+        .footer-left {
+            max-width: 400px;
+        }
+
+        .footer-right {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 15px;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            font-size: 1.6rem;
+        }
+
+        .social-icons a {
+            color: white;
+            transition: color 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #a5d6a7;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero {
+                flex-direction: column;
+            }
+            .bottom-section {
+                grid-template-columns: 1fr;
+            }
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>Events</h1>
+            <p>Your paragraph text Your paragraph text Your paragraph text Your paragraph text Your paragraph text Your paragraph text Your paragraph text Your paragraph text</p>
+        </div>
+        <div class="hero-image">
+            <img src="https://cdn.patchplants.com/uploads/16_9_Hero_min_c473107c93.jpg" alt="Students gardening" style="height:380px; object-fit:cover;">
+        </div>
+    </div>
+
+    <!-- Events Grid -->
+     <div class="events-grid">
+        <div class="event-card">
+            <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Community Garden">
+            <div class="event-info">
+                <div class="event-date">12 / 03 / 2026</div>
+                <div class="event-title">Community Event</div>
+                <div class="event-location">Local Community</div>
+                <div class="event-description">Your paragraph text Your paragraph text Your paragraph text Your paragraph text</div>
+                <div class="event-footer">
+                    <span><i class="fas fa-map-marker-alt"></i> Campus Garden</span>
+                    <span style="background:#2e7d32;color:white;padding:4px 12px;border-radius:20px;font-size:0.85rem;">Register</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Community Garden">
+            <div class="event-info">
+                <div class="event-date">12 / 03 / 2026</div>
+                <div class="event-title">Community Event</div>
+                <div class="event-location">Local Community</div>
+                <div class="event-description">Your paragraph text Your paragraph text Your paragraph text Your paragraph text</div>
+                <div class="event-footer">
+                    <span><i class="fas fa-map-marker-alt"></i> Campus Garden</span>
+                    <span style="background:#2e7d32;color:white;padding:4px 12px;border-radius:20px;font-size:0.85rem;">Register</span>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Community Garden">
+            <div class="event-info">
+                <div class="event-date">12 / 03 / 2026</div>
+                <div class="event-title">Community Event</div>
+                <div class="event-location">Local Community</div>
+                <div class="event-description">Your paragraph text Your paragraph text Your paragraph text Your paragraph text</div>
+                <div class="event-footer">
+                    <span><i class="fas fa-map-marker-alt"></i> Campus Garden</span>
+                    <span style="background:#2e7d32;color:white;padding:4px 12px;border-radius:20px;font-size:0.85rem;">Register</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Community Garden">
+            <div class="event-info">
+                <div class="event-date">12 / 03 / 2026</div>
+                <div class="event-title">Community Event</div>
+                <div class="event-location">Local Community</div>
+                <div class="event-description">Your paragraph text Your paragraph text Your paragraph text Your paragraph text</div>
+                <div class="event-footer">
+                    <span><i class="fas fa-map-marker-alt"></i> Campus Garden</span>
+                    <span style="background:#2e7d32;color:white;padding:4px 12px;border-radius:20px;font-size:0.85rem;">Register</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-card">
+             <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Community Garden">
+            <div class="event-info">
+                <div class="event-date">12 / 03 / 2026</div>
+                <div class="event-title">Community Event</div>
+                <div class="event-location">Local Community</div>
+                <div class="event-description">Your paragraph text Your paragraph text Your paragraph text Your paragraph text</div>
+                <div class="event-footer">
+                    <span><i class="fas fa-map-marker-alt"></i> Campus Garden</span>
+                    <span style="background:#2e7d32;color:white;padding:4px 12px;border-radius:20px;font-size:0.85rem;">Register</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="event-card">
+            <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Community Garden">
+            <div class="event-info">
+                <div class="event-date">12 / 03 / 2026</div>
+                <div class="event-title">Community Event</div>
+                <div class="event-location">Local Community</div>
+                <div class="event-description">Your paragraph text Your paragraph text Your paragraph text Your paragraph text</div>
+                <div class="event-footer">
+                    <span><i class="fas fa-map-marker-alt"></i> Campus Garden</span>
+                    <span style="background:#2e7d32;color:white;padding:4px 12px;border-radius:20px;font-size:0.rem;">Register</span>
+ </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+        <div class="left-column">
+            <div class="category-box">
+                <div class="category-title">
+                    <i class="fas fa-list"></i>
+                    All Categories
+                </div>
+                <div style="display:flex; flex-wrap:wrap; gap:10px;">
+                    <span style="background:#e8f5e9; padding:6px 14px; border-radius:20px; font-size:0.9rem;">Local Community</span>
+                    <span style="background:#e8f5e9; padding:6px 14px; border-radius:20px; font-size:0.9rem;">Workshops</span>
+                    <span style="background:#e8f5e9; padding:6px 14px; border-radius:20px; font-size:0.9rem;">Activities</span>
+                </div>
+            </div>
+
+            <div class="featured-event">
+                <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Featured Event" style="width:100%; height:220px; object-fit:cover;">
+                <div style="padding:20px;">
+                    <div style="background:#2e7d32; color:white; display:inline-block; padding:4px 12px; border-radius:20px; font-size:0.85rem;">Community Event</div>
+                    <h3 style="margin:12px 0; color:#1b5e20;">Community Event</h3>
+                    <p style="color:#555; font-size:0.95rem;">Your paragraph text Your paragraph text Your paragraph text Your paragraph text</p>
+                    <div style="margin-top:15px; color:#2e7d32; font-size:0.9rem;">12/03/2026</div>
+ </div>
+            </div>
+        </div>
+
+        <!-- Calendar -->
+        <div class="calendar-box">
+            <div class="calendar-header">
+                <span>March</span>
+                <span style="font-size:1.4rem;">2026</span>
+                <span style="cursor:pointer;">›</span>
+            </div>
+            <table>
+                <tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td><td>1</td></tr>
+                <tr><td>2</td><td>3</td><td>4</td><td class="calendar-day today">5</td><td>6</td><td>7</td><td>8</td></tr>
+                <tr><td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td></tr>
+                <tr><td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td></tr>
+                <tr><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td></tr>
+                <tr><td>30</td><td>31</td><td></td><td></td><td></td><td></td><td></td></tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Illustration -->
+    <div class="illustration">
+        <img src="https://www.hootons.co.uk/wp-content/uploads/2023/08/1525442422272.png" alt="Illustration">
+    </div>
+
+    <!-- Contact Section -->
+    <div class="contact-section">
+        <div class="contact-container">
+            <div class="contact-form">
+                <h2>Contact Us</h2>
+                <div class="form-group">
+                    <input type="text" placeholder="Your message...">
+                </div>
+                <button style="background:#fff; color:#1b5e20; border:none; padding:14px 30px; border-radius:8px; font-weight:600; cursor:pointer;">Send Message</button>
+            </div>
+
+            <div style="text-align:center; min-width:280px;">
+                <div style="margin-bottom:25px;">
+                    <div style="background:rgba(255,255,255,0.15); display:inline-flex; align-items:center; gap:12px; padding:12px 20px; border-radius:50px;">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <div style="font-size:0.9rem;">Contact</div>
+                            <div style="font-weight:500;">email: greencampus@gmail.com</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="background:rgba(255,255,255,0.15); display:inline-flex; align-items:center; gap:12px; padding:12px 20px; border-radius:50px;">
+                    <i class="fas fa-phone"></i>
+                    <div>
+                        <div style="font-size:0.9rem;">Telephone</div>
+                        <div style="font-weight:500;">tel: 010101010</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-left">
+                <div style="font-size:28px; margin-bottom:10px;">🌱 GreenCampus</div>
+                <p style="opacity:0.8; font-size:0.95rem;">Making our campus greener, one event at a time.</p>
+            </div>
+            <div class="footer-right">
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Calendar interactivity
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarDays = document.querySelectorAll('.calendar-day');
+            const todayElement = document.querySelector('.calendar-day.today');
+            
+            // Add click event to all calendar days
+            calendarDays.forEach(day => {
+                if (day.textContent.trim() !== '') { // Only clickable if it has a date
+                    day.addEventListener('click', function() {
+                        // Remove selected class from all days
+                        calendarDays.forEach(d => d.classList.remove('selected'));
+                        
+                        // Add selected class to clicked day
+                        this.classList.add('selected');
+                        
+                        // Optional: Show selected date (you can expand this)
+                        const selectedDate = this.textContent;
+                        console.log('Selected date:', selectedDate);
+                    });
+                }
+            });
+            
+            // Add navigation functionality to the arrow
+            const nextArrow = document.querySelector('.calendar-header span:last-child');
+            if (nextArrow) {
+                nextArrow.addEventListener('click', function() {
+                    // This is a simple example - in a real app you'd update the calendar
+                    alert('Next month functionality would be implemented here');
+                });
+            }
+        });
+    </script>
+
+</body>
 </html>
