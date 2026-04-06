@@ -518,6 +518,15 @@ section{
 }
 
 
+.container3{
+    display: flex;
+    background-color: #41ce00;
+    border: 2px solid #ffffff;
+    min-height: 48vh;
+    align-items: center;
+    justify-content: center;
+
+}
 
 @media (max-width: 1000px){
     section,
