@@ -566,17 +566,215 @@ section{
 }
 
 .container4{
-    background-color:var(--reviewsbg);
-    min-height: 80vh;
-    width: 100%;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--reviewsbg);
 }
+
+.slide-container{
+    max-width: 1600px;
+    width: 100%;
+    background-color: grey;
+    padding: 40px 0;
+}
+
+.slide-content{
+    margin: 0 40px;
+    background-color: yellow;
+    overflow: hidden;
+    border-radius: 25px;
+}
+
+.card{
+    border-radius: 25px;
+    background-color: white;
+
+}
+
+.image-content,
+.card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 14px;
+}
+
+.image-content{
+    position: relative;
+    row-gap: 5px;
+
+}
+
+
+
+
+
+.card-image{
+    position: relative;
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    background: white;
+    padding: 3px;
+
+}
+
+.card-image .card-img{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius:50%;
+    border: 4px solid black;
+}
+
+.name{
+    font-size: 18px;
+    font-weight: 500;
+    color: #393838;
+}
+
+.description{
+    font-size: 14px;
+    color: #000000;
+    text-align: center;
+}
+
+
+.swiper-navBtn{
+    color:blue;
+    transition: color 0.3s ease;
+}
+
+.swiper-navBtn::before,
+.swiper-navBtn::after{
+    font-size: 40px;
+}
+
+.swiper-button-next{
+    right: 0;
+}
+
+.swiper-button-prev{
+    left: 0;
+}
+
+.swiper-pagination-bullet{
+    background-color: blue;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active{
+    background-color: red;
+}
+
+
 
 .contactcontainer{
-    background-color:var(--contactbg);
-    min-height: 80vh;
     width: 100%;
+    background-color: var(--contactbg);
+    padding: 80px 60px;
 }
 
+.contact-box{
+    background: var(--contactbg);
+    display: flex;
+}
+
+.contact-left{
+    flex-basis: 60%;
+    padding: 40px 60px;
+}
+
+.contact-right{
+    flex-direction: row;
+}
+
+.details{
+    flex-basis: 40%;
+    padding: 40px;
+    background:#64474c;
+    color: white;
+}
+
+.contactmap{
+    width: 100%;
+    height: 100%;
+}
+
+
+
+
+
+.input-row{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+}
+
+.input-row .input-group{
+    flex-basis: 45%;
+
+}
+
+input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    outline: none;
+    padding-bottom: 5px;
+}
+
+textarea{
+    width: 100%;
+    border: 1px solid #ccc;
+    outline: none;
+    padding: 10px;
+    box-sizing: border-box;
+
+
+}
+
+label{
+    margin-bottom: 6px;
+    display: block;
+    color: #1c00b5;
+}
+
+.contactsend button{
+    background: #1c00b5;
+    width: 100px;
+    border: none;
+    outline: none;
+    color: #fff;
+    height: 35px;
+    border-radius: 30px;
+    margin-top: 20px;
+    box-shadow: 0px 5px 15px 0px rgba(28,0,181,0.3);
+
+}
+
+.contact-left h3{
+    color: #1c00b5;
+    font-weight: 600;
+    margin-bottom: 30px;
+}
+
+.contact-right h3{
+    font-weight: 600;
+    margin-bottom: 20px;
+    
+}
+
+tr td:first-child{
+    padding-right: 20px;
+}
+
+tr td{
+    padding-top: 20px;
+}
 
 @media (max-width: 1234px){
     section,
@@ -624,11 +822,21 @@ section{
         font-size: 17px;
     }
 
+    .contact-box{
+        flex-direction: column;
+    }
+}
 
+@media screen and (max-width: 768px){
+    .swiper-navBtn{
+        display: none;
+    }
 }
 
 
-
 /* Duncan's code for resources.html */
+
+
+
 
 
