@@ -34,6 +34,10 @@ a.active-page {
     --text-color: #000000; 
     --search-bar:#b0bbab;
     --search-text: #000000;
+    --bannerbg: #687c5f;
+    --reviewsbg: #687c5f;
+    --contactbg: #64474c;
+    
 
 }
 
@@ -49,6 +53,9 @@ body.dark{
     --side-nav: #242526;
     --text-color: #CCC; 
     --search-bar:#242526;
+    --bannerbg: #272727;
+    --reviewsbg: #6e6e6e;
+    --contactbg: #272727;
 
 }
 
@@ -425,7 +432,7 @@ section{
 
 .container2{
     display: flex;
-    background-color: #687c5f;
+    background-color: var(--bannerbg);
     border: 2px solid #ffffff;
     min-height: 48vh;
     align-items: center;
@@ -517,18 +524,61 @@ section{
     flex-wrap: wrap;
 }
 
-
 .container3{
     display: flex;
-    background-color: #41ce00;
-    border: 2px solid #ffffff;
-    min-height: 48vh;
-    align-items: center;
-    justify-content: center;
+    min-height: 70vh;
+    flex-direction: column;
+    gap: 1em;
+    margin: 2em 5em;
+    margin-top: 6em;
 
 }
 
-@media (max-width: 1000px){
+
+
+
+
+
+.videobox{
+    flex: 1;
+    border: 2px solid #ffffff;
+    color:var(--text-color);
+
+}
+
+
+
+.videosumbox{
+    flex: 1;
+    border: 2px solid #ffffff;
+    align-items: center;
+    
+
+}
+
+.videosumbox p{
+    font-size: 20px;
+
+    margin-left: 4em;
+    margin-right: 4em;
+    color:var(--text-color);
+    text-align: center;
+}
+
+.container4{
+    background-color:var(--reviewsbg);
+    min-height: 80vh;
+    width: 100%;
+}
+
+.contactcontainer{
+    background-color:var(--contactbg);
+    min-height: 80vh;
+    width: 100%;
+}
+
+
+@media (max-width: 1234px){
     section,
     .container.second section{
         flex-direction: column;
@@ -553,7 +603,27 @@ section{
 
     }
 
-  
+    section,
+    .container3.second section{
+        flex-direction: column;
+    }
+    .container3{
+        margin: 1em 2em;
+        min-height: 60vh;
+        
+    }
+
+    .videobox{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .videosumbox p{
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 17px;
+    }
+
 
 }
 
