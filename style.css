@@ -724,7 +724,9 @@ input{
     border: none;
     border-bottom: 1px solid #ccc;
     outline: none;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 textarea{
@@ -825,18 +827,118 @@ tr td{
     .contact-box{
         flex-direction: column;
     }
+
 }
 
 @media screen and (max-width: 768px){
     .swiper-navBtn{
         display: none;
     }
+
+    .contact-left{
+        padding: 10px 10px;
+    }
+
+    .details{
+        padding: 10px 10px;
+    }
+
+    .contactmap iframe{
+        width: 100%;
+    }
+
+
+
 }
+
+
+    
+
 
 
 /* Duncan's code for resources.html */
 
 
+.quiz-container{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 80 rem;
+    margin: 0 auto;
+    background-color: var(--bannerbg);
+}
 
+.quiz-container > * {
+    width: 100%;
+}
 
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.hidden{
+    display: none;
+}
+
+.quiz-container h1 {
+    font-size: 5.4rem;
+    color: black;
+    margin-bottom: 5rem;
+}
+
+.quiz-container h1 > span {
+  font-size: 2.4rem;
+  font-weight: 500;
+}
+
+.quiz-container h2 {
+    font-size: 4.2rem;
+    margin-bottom: 4rem;
+    font-weight: 700;
+}
+
+.quiz-container h3 {
+    font-size: 2.8rem;
+    font-weight: 500;
+}
+
+.btn {
+  font-size: 1.8rem;
+  padding: 1rem 0;
+  width: 20rem;
+  text-align: center;
+  border: 0.1rem solid black;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: black;
+  background-color: var(--body-color);
+}
+
+.btn:hover {
+  cursor: pointer;
+  box-shadow: 0 0.4rem 1.4rem 0 rgba(27, 87, 72, 0.5);
+  transform: translateY(-0.1rem);
+  transition: transform 150ms;
+}
+
+.btn[disabled]:hover {
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+}
 
