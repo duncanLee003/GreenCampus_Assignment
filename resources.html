@@ -56,36 +56,101 @@
             </div>
         </nav>
 
-        <script src = "script.js"></script>
+        <div class="page-container">
+            <div class="game-ui">
+                <h2>Level <span id="level">1</span></h2>
+                
 
-        <!-- spacing so content isn't hidden behind nav bar-->
-        <style>
-            body {padding-top: 100px;}
-        </style>
+                <div class="progress-container">
+                    <div class="progress-segments"></div>
+                    <div class="progress-bar" id="xpBar"></div>
+                    
+                </div>
 
-        <!-- write code here!-->
+                <p id="xpMessage"></p>
 
-        <div class = "quiz-container">
-            <div id = "homeQuiz" class = "flex-center flex-column">
-                <h1>Sustainability Quiz</h1>
-                <a class ="btn" href = "#">Play</a>
-                <a class ="btn" href = "#">High Scores</a>
+                <p><span id="xp">0</span> / <span id="xpNeeded">100</span> XP</p>
 
+                <button onclick="gainXP(20)">Complete Challenge (+20 XP)</button>
 
+                <p>🔥 Streak: <span id="streakCount">0</span> days</p>
 
+                <div id="reward"></div>
+
+                <h3>Leaderboard</h3>
+
+                <table id="leaderboardTable">
+                <thead>
+                    <tr>
+                    <th>#</th>
+                    <th>Player</th>
+                    <th>XP</th>
+                    <th>Reward</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+                </table>
+
+                <input type="text" id="username" placeholder="Your name">
+                <button onclick="submitScore()">Submit Score</button>
+
+                <select id="titleSelector" onchange="changeTitle()"></select>
+
+                <div class="challenge-grid" id="challengeGrid"></div>
+                
+
+                <button onclick="addChallenge()">+ Add Challenge</button>
+
+                <select id="challengeFilter" onchange="renderChallenges()">
+                    <option value="all">All</option>
+                    <option value="Daily">Daily</option>
+                    <option value="Weekly">Weekly</option>
+                </select>
+
+                <button onclick="showTab('active')">In Progress</button>
+                <button onclick="showTab('completed')">Completed</button>
+                <h3>In Progress</h3>
+                <div class="challenge-grid" id="activeChallenges"></div>
+
+                <h3>Completed</h3>
+                <div class="challenge-grid" id="completedChallenges"></div>
+
+                <h3>Quick Quiz</h3>
+
+                <div id="quizBox" class="quiz-box">
+                    <h4 id="questionText">Question here</h4>
+
+                    <div id="answerButtons"></div>
+
+                    <p id="quizFeedback"></p>
+
+                    <button onclick="nextQuestion()">Next</button>
+                </div>
+
+                <div id="popupModal" class="modal">
+                <div class="modal-content">
+                    <h3 id="modalTitle">Add Challenge</h3>
+
+                    <input id="challengeName" placeholder="Challenge name">
+                    <input id="challengeType" placeholder="Type (Daily/Weekly)">
+                    <input id="challengeDesc" placeholder="Description">
+                    <input id="challengeDays" type="number" placeholder="Days left">
+
+                    <div class="modal-buttons">
+                    <button onclick="confirmChallenge()">Save</button>
+                    <button onclick="closeModal()">Cancel</button>
+                    </div>
+                </div>
             </div>
-            
-        
+
         </div>
         
-
-        
-
+                       
 
 
 
     </body>
-
+    <script src = "script.js"></script>
 
 
 </html>
