@@ -58,6 +58,11 @@
 
         <div class="page-container">
             <div class="game-ui">
+                <h1>Sustainability Goal Tracker</h1>
+                <div class="streak-box">
+                    <p>Streak: <span id="streakCount">0</span> days</p>
+                </div>
+                
                 <h2>Level <span id="level">1</span></h2>
                 
 
@@ -73,28 +78,50 @@
 
                 <button onclick="gainXP(20)">Complete Challenge (+20 XP)</button>
 
-                <p>🔥 Streak: <span id="streakCount">0</span> days</p>
+                
 
                 <div id="reward"></div>
 
-                <h3>Leaderboard</h3>
+                <div class = "rowboardsection">
+                    <div class="leaderboardcol">
+                        <h3>Leaderboard</h3>
 
-                <table id="leaderboardTable">
-                <thead>
-                    <tr>
-                    <th>#</th>
-                    <th>Player</th>
-                    <th>XP</th>
-                    <th>Reward</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-                </table>
+                        <table id="leaderboardTable">
+                        <thead>
+                            <tr>
+                            <th>#</th>
+                            <th>Player</th>
+                            <th>XP</th>
+                            <th>Reward</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        </table>
 
-                <input type="text" id="username" placeholder="Your name">
-                <button onclick="submitScore()">Submit Score</button>
+                        <input type="text" id="username" placeholder="Your name">
+                        <button onclick="submitScore()">Submit Score</button>
 
-                <select id="titleSelector" onchange="changeTitle()"></select>
+                        <select id="titleSelector" onchange="changeTitle()"></select>
+                    </div>
+                    <div class = "galleryheading">
+                        <h3>Photos taken by challengers</h3>
+                    
+                    
+                        <div class = "galleryothers">
+                            
+                            <img src="img/profile1.png" alt="" class="card-img">
+                            <img src="img/profile1.png" alt="" class="card-img">
+                            <img src="img/profile1.png" alt="" class="card-img">
+                            <img src="img/profile1.png" alt="" class="card-img">
+                            <img src="img/profile1.png" alt="" class="card-img">
+                            <img src="img/profile1.png" alt="" class="card-img">
+                            <img src="img/profile1.png" alt="" class="card-img">
+                            <img src="img/profile1.png" alt="" class="card-img">
+                            <img src="img/profile1.png" alt="" class="card-img">
+
+                        </div>
+                    </div>
+                </div>
 
                 <div class="challenge-grid" id="challengeGrid"></div>
                 
@@ -102,17 +129,17 @@
                 <button onclick="addChallenge()">+ Add Challenge</button>
 
                 <select id="challengeFilter" onchange="renderChallenges()">
-                    <option value="all">All</option>
-                    <option value="Daily">Daily</option>
-                    <option value="Weekly">Weekly</option>
+                    <option value="all" selected>All</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
                 </select>
 
                 <button onclick="showTab('active')">In Progress</button>
                 <button onclick="showTab('completed')">Completed</button>
-                <h3>In Progress</h3>
+                <h3 id="activeTitle">In Progress</h3>
                 <div class="challenge-grid" id="activeChallenges"></div>
 
-                <h3>Completed</h3>
+                <h3 id="completedTitle">Completed</h3>
                 <div class="challenge-grid" id="completedChallenges"></div>
 
                 <h3>Quick Quiz</h3>
@@ -124,7 +151,7 @@
 
                     <p id="quizFeedback"></p>
 
-                    <button onclick="nextQuestion()">Next</button>
+                    
                 </div>
 
                 <div id="popupModal" class="modal">

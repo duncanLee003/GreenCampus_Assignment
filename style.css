@@ -778,78 +778,9 @@ tr td{
     padding-top: 20px;
 }
 
-@media (max-width: 1234px){
-    section,
-    .container.second section{
-        flex-direction: column;
-    }
-    .container{
-        margin: 1em 2em;
-    }
-    .firstbox h1{
-    margin-left: auto;
-    }
-
-    .firstbox p{
-    margin-left: auto;
-    }
-
-    .firstbox button{
-    margin-left: auto;
-    }
-
-    .banner-content{
-        flex-wrap:wrap;
-
-    }
-
-    section,
-    .container3.second section{
-        flex-direction: column;
-    }
-    .container3{
-        margin: 1em 2em;
-        min-height: 60vh;
-        
-    }
-
-    .videobox{
-        margin-left: auto;
-        margin-right: auto;
-    }
-
-    .videosumbox p{
-        margin-left: auto;
-        margin-right: auto;
-        font-size: 17px;
-    }
-
-    .contact-box{
-        flex-direction: column;
-    }
-
-}
-
-@media screen and (max-width: 768px){
-    .swiper-navBtn{
-        display: none;
-    }
-
-    .contact-left{
-        padding: 10px 10px;
-    }
-
-    .details{
-        padding: 10px 10px;
-    }
-
-    .contactmap iframe{
-        width: 100%;
-    }
 
 
 
-}
 
 
     
@@ -858,24 +789,62 @@ tr td{
 
 /* Duncan's code for resources.html */
 
+
+
 .page-container {
-  max-width: 1100px;
-  margin: 0 auto;   /* 👈 this centers it */
-  padding: 0 20px;  /* 👈 prevents touching screen edges */
+  margin: 1em 8em;   /* centers it */
+  padding: 0 20px;  /*aligns it*/
+  
 }
 
 .game-ui {
   margin-top: 7em;
   font-family: Arial;
-  max-width: 1000px;
+  max-width: 1600px;
   
+}
+
+.streak-box{
+    color:#ffffff;
+    background: #6b7f62;
+    border-radius: 50px;
+    padding: 10px 10px;
+    height: auto;
+    text-align: center;
+    float:right; /*right side*/
+    width: 150px;
+    margin-top:-50px;
+    word-wrap: break-word;
+
+}
+
+.game-ui h1{
+    font-size: 60px;
+    margin-top: 1em;
+    margin-bottom: 2em;
+    font-weight: 400;
+    color: #314537;
+    
+}
+
+.game-ui h2{
+    color:#ffffff;
+    background: #6b7f62;
+    border-radius: 50px;
+    padding: 10px 10px;
+    height: auto;
+    text-align: center;
+    float:left; /*right side*/
+    width: 150px;
+    margin-top:-60px;
+    word-wrap: break-word;
 }
 
 .progress-container {
   position: relative;
-  height: 20px;
-  background: #222;
-  border-radius: 10px;
+  height: 50px;
+  background: #56383e;
+  border-radius: 50px;
   overflow: hidden;
 }
 
@@ -890,7 +859,7 @@ tr td{
 
 .progress-segments div {
   flex: 1;
-  border-right: 2px solid #111;
+  border-right: 2px solid #766060;
 }
 
 /* actual XP fill */
@@ -898,14 +867,14 @@ tr td{
   position: absolute;
   height: 100%;
   width: 0%;
-  background: linear-gradient(90deg, #4caf50, #8bc34a);
+  background: linear-gradient(90deg, #708a64,#9bad92);
   z-index: 1;
   transition: width 0.4s ease;
 }
 
 #reward {
   margin-top: 10px;
-  color: gold;
+  color: rgb(11, 117, 64);
   font-weight: bold;
 }
 
@@ -915,7 +884,8 @@ tr td{
   max-width: 500px;
   border-collapse: collapse;
   margin-top: 10px;
-  font-family: Arial;
+  
+  
 }
 
 #leaderboardTable th,
@@ -923,21 +893,68 @@ tr td{
   padding: 10px;
   text-align: left;
   border-bottom: 1px solid #ddd;
+  
 }
 
 #leaderboardTable th {
-  background: #222;
+  background: #4d2c2c;
   color: white;
+  
 }
 
 #leaderboardTable tr:nth-child(even) {
-  background: #f9f9f9;
+  background: #c8c6b7;
+  
 }
 
-#leaderboardTable tr:hover {
-  background: #f1f1f1;
+.rowboardsection{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    gap: 1em;
+    border: 2px solid #6acd6c;
 }
 
+.leaderboardcol{
+    flex: 1;
+    border: 2px solid #698cd2;
+    
+
+}
+
+.leaderboardcol input{
+    width:auto;
+    
+}
+
+.leaderboardcol h3{
+    font-size: 30px;
+    font-weight: 500;
+    
+}
+
+.galleryothers{
+    flex: 1;
+
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 6px;
+    border: 2px solid #701e1e;
+    
+}
+
+.galleryheading{
+    flex: 1;
+    border: 2px solid #f39e9e;
+    flex-basis: 30%; /*makes the right column's width wider*/
+}
+
+.galleryheading h3{
+    font-size: 30px;
+    font-weight: 500;
+    
+}
 
 .challenge-grid {
   display: grid;
@@ -1031,4 +1048,129 @@ tr td{
   padding: 10px;
   width: 100%;
   cursor: pointer;
+}
+
+#activeChallenges {
+  display: grid;
+}
+
+#completedChallenges {
+  display: none;
+}
+
+@media (max-width: 1234px){
+    section,
+    .container.second section{
+        flex-direction: column;
+    }
+    .container{
+        margin: 1em 2em;
+    }
+    .firstbox h1{
+    margin-left: auto;
+    }
+
+    .firstbox p{
+    margin-left: auto;
+    }
+
+    .firstbox button{
+    margin-left: auto;
+    }
+
+    .banner-content{
+        flex-wrap:wrap;
+
+    }
+
+    section,
+    .container3.second section{
+        flex-direction: column;
+    }
+    .container3{
+        margin: 1em 2em;
+        min-height: 60vh;
+        
+    }
+
+    .videobox{
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .videosumbox p{
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 17px;
+    }
+
+    .contact-box{
+        flex-direction: column;
+    }
+
+
+
+
+
+
+}
+
+@media screen and (max-width: 768px){
+    .swiper-navBtn{
+        display: none;
+    }
+
+    .contact-left{
+        padding: 10px 10px;
+    }
+
+    .details{
+        padding: 10px 10px;
+    }
+
+    .contactmap iframe{
+        width: 100%;
+    }
+
+    .page-container{
+        margin: 0;
+    }
+
+
+
+    .rowboardsection{
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+
+    .galleryheading{
+        flex-wrap: wrap;
+    }
+
+    .galleryothers{
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1px;
+    }
+
+
+    
+    .galleryothers img:first-child{
+        display:none;
+    }
+        
+    .galleryothers img:nth-child(2){
+        display:none;
+    }
+
+    .galleryothers img:nth-child(3){
+        display:none;
+    }
+    .galleryothers img:nth-child(4){
+        display:none;
+    }
+
+
+    
+    
+
 }

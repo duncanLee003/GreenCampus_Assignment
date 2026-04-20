@@ -10,12 +10,12 @@ const body = document.querySelector("body"),
             body.classList.add("dark");
           }
 
-// js code to toggle dark and light mode
+
       modeToggle.addEventListener("click" , () =>{
         modeToggle.classList.toggle("active");
         body.classList.toggle("dark");
 
-        // js code to keep user selected mode even page refresh or file reopen
+
         if(!body.classList.contains("dark")){
             localStorage.setItem("mode" , "light-mode");
         }else{
@@ -23,13 +23,13 @@ const body = document.querySelector("body"),
         }
       });
 
-// js code to toggle search box
+
         searchToggle.addEventListener("click" , () =>{
         searchToggle.classList.toggle("active");
       });
  
       
-//   js code to toggle sidebar
+
 sidebarOpen.addEventListener("click" , () =>{
     nav.classList.add("active");
 });
@@ -42,9 +42,6 @@ body.addEventListener("click" , e =>{
     }
 });
 
-// =========================
-// PLAYER PROGRESS SYSTEM
-// =========================
 
 
 let unlockedTitles = [];
@@ -69,7 +66,7 @@ function gainXP(amount) {
 
   xp += amount;
 
-  updateStreak(); // 🔥 IMPORTANT LINE
+  updateStreak(); 
 
   while (xp >= xpToNextLevel(level)) {
     xp -= xpToNextLevel(level);
@@ -89,7 +86,7 @@ const milestones = [
   { percent: 100, message: "👑 Level up soon!" }
 ];
 
-// Update progress bar + text
+
 function updateUI() {
   const xpNeeded = xpToNextLevel(level);
   const percentage = (xp / xpNeeded) * 100;
@@ -105,13 +102,15 @@ function updateUI() {
 function createSegments() {
   const container = document.querySelector(".progress-segments");
 
+  if (!container) return; // 🔥 prevent crash
+
   for (let i = 0; i < 4; i++) {
     const seg = document.createElement("div");
     container.appendChild(seg);
   }
 }
 
-createSegments();
+
 
 function updateXPMessage(percent) {
   let currentMessage = "";
@@ -125,7 +124,7 @@ function updateXPMessage(percent) {
   document.getElementById("xpMessage").innerText = currentMessage;
 }
 
-// Show reward on level up
+
 function showReward(level) {
   let newTitle = "";
 
@@ -144,7 +143,7 @@ function showReward(level) {
   }
 }
 
-// Save/load progress
+
 function saveProgress() {
   localStorage.setItem("xp", xp);
   localStorage.setItem("level", level);
@@ -283,10 +282,7 @@ function renderLeaderboard() {
       <td>${player.title || "—"}</td>
     `;
 
-    // Highlight top 3
-    if (index === 0) row.style.background = "#ffd700";
-    if (index === 1) row.style.background = "#c0c0c0";
-    if (index === 2) row.style.background = "#cd7f32";
+
 
     tableBody.appendChild(row);
   });
@@ -321,34 +317,34 @@ function changeTitle() {
 const defaultChallenges = [
   {
     name: "Run 5km",
-    type: "Daily",
+    type: "daily",
     description: "Complete a 5km run",
     daysLeft: 2,
-    xpReward: 20,
+    xpReward: 50,
     completed: false,
     image: "../img/carddefault.png"
   },
   {
     name: "Drink 2L Water",
-    type: "Daily",
+    type: "daily",
     description: "Stay hydrated today",
     daysLeft: 1,
-    xpReward: 10,
+    xpReward: 50,
     completed: false,
     image: "img/carddefault.png"
   },
   {
     name: "Read for 30 mins",
-    type: "Daily",
+    type: "daily",
     description: "Improve your knowledge",
     daysLeft: 1,
-    xpReward: 15,
+    xpReward: 50,
     completed: false,
     image: "img/carddefault.png"
   },
   {
     name: "Workout 3 times",
-    type: "Weekly",
+    type: "weekly",
     description: "Complete 3 workouts this week",
     daysLeft: 5,
     xpReward: 50,
@@ -357,10 +353,10 @@ const defaultChallenges = [
   },
   {
     name: "No sugar day",
-    type: "Daily",
+    type: "daily",
     description: "Avoid sugar for a full day",
     daysLeft: 1,
-    xpReward: 25,
+    xpReward: 50,
     completed: false,
     image: "img/carddefault.png"
   }
@@ -368,37 +364,57 @@ const defaultChallenges = [
 
 let challenges = JSON.parse(localStorage.getItem("challenges"));
 
-if (!challenges || challenges.length === 0) {
-  challenges = defaultChallenges;
+if (!Array.isArray(challenges) || challenges.length === 0) {
+  challenges = [...defaultChallenges]; // clone defaults
+  localStorage.setItem("challenges", JSON.stringify(challenges));
 }
 
 function renderChallenges() {
+  console.log("RUNNING renderChallenges");
+  console.log("Challenges:", challenges);
+
   const activeGrid = document.getElementById("activeChallenges");
   const completedGrid = document.getElementById("completedChallenges");
+
+
+
+  // 🚨 stop crash if HTML not loaded
+  if (!activeGrid || !completedGrid) {
+    console.error("Missing challenge containers in HTML");
+    return;
+  }
 
   activeGrid.innerHTML = "";
   completedGrid.innerHTML = "";
 
-  const filter = document.getElementById("challengeFilter").value;
+  
+
+
+  const filterElement = document.getElementById("challengeFilter");
+
+  let filter = "all";
+  if (filterElement && filterElement.value) {
+    filter = filterElement.value;
+  }
 
   challenges.forEach((challenge, index) => {
 
-    // 🔥 FILTER LOGIC
-    if (filter !== "all" && challenge.type !== filter) return;
+    const challengeType = challenge.type.toLowerCase();
+    const currentFilter = filter.toLowerCase();
+
+    if (currentFilter !== "all" && challengeType !== currentFilter) return;
 
     const card = document.createElement("div");
     card.className = "challenge-card";
 
     card.innerHTML = `
       <img src="${challenge.image}" class="challenge-img">
-
       <h3>${challenge.name}</h3>
       <p>${challenge.description}</p>
       <p><strong>${challenge.type}</strong></p>
 
       <div class="challenge-footer">
         <span>Ends in ${challenge.daysLeft} days</span>
-
         <div>
           ${
             challenge.completed
@@ -416,8 +432,6 @@ function renderChallenges() {
       activeGrid.appendChild(card);
     }
   });
-
-  localStorage.setItem("challenges", JSON.stringify(challenges));
 }
 
 let tempChallenge = null;
@@ -441,7 +455,7 @@ function confirmChallenge() {
 
   challenges.push({
     name,
-    type,
+    type: type.toLowerCase().trim(),
     description,
     daysLeft,
     xpReward: 20,
@@ -468,14 +482,14 @@ function editChallenge(index) {
 function completeChallenge(index) {
   const challenge = challenges[index];
 
-  if (challenge.completed) return; // prevent double XP
+  if (challenge.completed) return;
 
   challenge.completed = true;
 
-  // Give XP
-  gainXP(Number(challenge.xpReward) || 0);
+  // ✅ SAVE IMMEDIATELY
+  localStorage.setItem("challenges", JSON.stringify(challenges));
 
-  // OPTIONAL: auto-submit to leaderboard
+  gainXP(Number(challenge.xpReward) || 0);
   autoUpdateLeaderboard();
 
   renderChallenges();
@@ -508,13 +522,33 @@ function autoUpdateLeaderboard() {
 }
 
 function showTab(type) {
-  document.getElementById("activeChallenges").style.display =
-    type === "active" ? "grid" : "none";
+  const activeGrid = document.getElementById("activeChallenges");
+  const completedGrid = document.getElementById("completedChallenges");
 
-  document.getElementById("completedChallenges").style.display =
-    type === "completed" ? "grid" : "none";
+  const activeTitle = document.getElementById("activeTitle");
+  const completedTitle = document.getElementById("completedTitle");
+
+  if (type === "active") {
+    activeGrid.style.display = "grid";
+    completedGrid.style.display = "none";
+
+    activeTitle.style.display = "block";     // ✅ show
+    completedTitle.style.display = "none";   // ❌ hide
+  } else {
+    activeGrid.style.display = "none";
+    completedGrid.style.display = "grid";
+
+    activeTitle.style.display = "none";      // ❌ hide
+    completedTitle.style.display = "block";  // ✅ show
+  }
 }
 
+
+let quizCompletedDate = localStorage.getItem("quizCompletedDate");
+function isQuizLocked() {
+  const today = new Date().toDateString();
+  return quizCompletedDate === today;
+}
 
 const quiz = [
   {
@@ -534,9 +568,27 @@ const quiz = [
   }
 ];
 
+function updateStreakUI() {
+  const el = document.getElementById("streakCount");
+  if (el) {
+    el.innerText = streak;
+  }
+}
+
+let correctAnswers = 0;
+
 let currentQuestion = 0;
 
 function loadQuestion() {
+
+  if (isQuizLocked()) {
+    document.getElementById("questionText").innerText =
+      "✅ You’ve completed today’s quiz! Come back tomorrow.";
+
+    document.getElementById("answerButtons").innerHTML = "";
+    return;
+  }
+
   const q = quiz[currentQuestion];
 
   document.getElementById("questionText").innerText = q.question;
@@ -547,9 +599,7 @@ function loadQuestion() {
   q.answers.forEach((answer, index) => {
     const btn = document.createElement("button");
     btn.innerText = answer;
-
     btn.onclick = () => checkAnswer(index);
-
     container.appendChild(btn);
   });
 
@@ -561,28 +611,101 @@ function checkAnswer(selected) {
 
   if (selected === q.correct) {
     document.getElementById("quizFeedback").innerText = "✅ Correct! +10 XP";
-    gainXP(10); // 🔥 THIS connects to your system
+    gainXP(10);
+
+    correctAnswers++;
   } else {
     document.getElementById("quizFeedback").innerText = "❌ Wrong answer";
   }
-}
 
+  setTimeout(() => {
+    nextQuestion();
+  }, 800);
+}
 
 function nextQuestion() {
   currentQuestion++;
 
   if (currentQuestion >= quiz.length) {
-    currentQuestion = 0;
+
+    const score = correctAnswers;
+    const total = quiz.length;
+
+    let message = `🎉 Quiz complete!\n\nYou scored ${score}/${total}\n`;
+
+    // 🎯 PERFECT SCORE CHECK
+    if (score === total) {
+      message += "🔥 Perfect score!\n";
+      
+      const unlocked = unlockQuizTitle(); // 👈 change here
+
+      if (unlocked) {
+        message += "🏆 You unlocked: 🧠 Quiz Master!";
+      } else {
+        message += "🧠 You already have the Quiz Master title!";
+      }
+    }
+
+    // save completion date
+    const today = new Date().toDateString();
+    localStorage.setItem("quizCompletedDate", today);
+    quizCompletedDate = today;
+
+    // show result
+    document.getElementById("questionText").innerText = message;
+    document.getElementById("answerButtons").innerHTML = "";
+    document.getElementById("quizFeedback").innerText = "";
+
+    // reset for next time
+    correctAnswers = 0;
+
+    return;
   }
 
   loadQuestion();
 }
 
+function unlockQuizTitle() {
+  const newTitle = "🧠 Quiz Master";
+
+  if (!unlockedTitles.includes(newTitle)) {
+    unlockedTitles.push(newTitle);
+    selectedTitle = newTitle;
+
+    document.getElementById("reward").innerText =
+      `Unlocked Title: ${newTitle}`;
+
+    updateTitleSelector();
+    saveProgress();
+
+    return true; // ✅ NEW unlock
+  }
+
+  return false; // ❌ already owned
+}
+
 // =========================
 // INIT
 // =========================
-loadProgress();
-loadQuestion();
-renderLeaderboard();
-renderChallenges();
+document.addEventListener("DOMContentLoaded", () => {
+  loadProgress();
+
+  const filterElement = document.getElementById("challengeFilter");
+  if (filterElement) filterElement.value = "all";
+
+  createSegments();
+  renderLeaderboard();
+  renderChallenges();
+
+  showTab("active");
+
+  // 🔥 reset question index if new day
+  const today = new Date().toDateString();
+  if (quizCompletedDate !== today) {
+    currentQuestion = 0;
+  }
+
+  loadQuestion();
+});
+
 
