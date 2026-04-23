@@ -129,9 +129,29 @@ nav .nav-bar .logo a{
 
 /* Arek's code for tips.html */
 /* write ur CSS code here*/
-
-
-
+@media (max-width: 768px) {
+    body { padding-top: 60px; }
+    div[style*="text-align: right"] {
+        text-align: left !important;
+        margin-left: 20px !important;
+        margin-right: 20px !important;
+        padding-right: 0 !important;
+    }
+    div[style*="position: absolute"][style*="top: 1100px"] {
+        position: static !important;
+        margin: 20px !important;
+        color: black !important;
+        background-color: rgba(49, 69, 55, 0.1) !important;
+        padding: 20px !important;
+        border-radius: 8px !important;
+    }
+    .background-images div {
+        transform: translate(-50%, -50%) scale(0.7) !important;
+    }
+    .background-images div:nth-child(5) {
+        transform: translate(-50%, -50%) scale(0.5) !important;
+    }
+}
 
 /* Jezza's code for resources.html */
 /* write ur CSS code here*/
@@ -150,5 +170,106 @@ nav .nav-bar .logo a{
 
 /* Duncan's code for events.html */
 
+/* Global Responsive Styles */
 
+/* Extra Large Screens (1200px+) */
+@media (min-width: 1200px) {
+    :root {
+        font-size: 16px;
+    }
+}
+
+/* Large Screens (1024px - 1199px) */
+@media (max-width: 1199px) {
+    :root {
+        font-size: 15px;
+    }
+}
+
+/* Medium Screens (768px - 1023px) */
+@media (max-width: 1023px) {
+    :root {
+        font-size: 14px;
+    }
+    
+    .nav-bar .nav-links {
+        flex-wrap: wrap;
+    }
+}
+
+/* Tablet Screens (480px - 767px) */
+@media (max-width: 767px) {
+    :root {
+        font-size: 13px;
+    }
+    
+    .nav-bar .nav-links li {
+        margin: 0 0.5rem;
+    }
+    
+    .nav-bar li a {
+        font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+        padding: 0.3rem;
+    }
+}
+
+/* Small Screens (320px - 479px) */
+@media (max-width: 479px) {
+    :root {
+        font-size: 12px;
+    }
+    
+    nav {
+        height: 3.5rem;
+    }
+    
+    nav .nav-bar {
+        padding: 0 0.5rem;
+    }
+    
+    nav .nav-bar .logo a {
+        font-size: clamp(1rem, 4vw, 1.4rem);
+    }
+    
+    .nav-bar .nav-links {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .nav-bar .nav-links li {
+        margin: 0.3rem 0;
+    }
+    
+    .nav-bar li a {
+        font-size: 0.8rem;
+        padding: 0.2rem;
+    }
+}
+
+/* Ensure all images are responsive */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Ensure all text scales responsively */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1.2;
+    word-wrap: break-word;
+}
+
+p {
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+/* Make containers fluid */
+.container, 
+main, 
+section, 
+article {
+    width: 100%;
+    max-width: 100%;
+}
 
