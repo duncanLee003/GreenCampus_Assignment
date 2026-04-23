@@ -37,6 +37,10 @@ a.active-page {
     --bannerbg: #687c5f;
     --reviewsbg: #687c5f;
     --contactbg: #64474c;
+    --secleader:#c8c6b7;
+    --leadertitle: #ece4d5;
+    --namecolour: #7a5e62;
+    --darkgreen: #314537;
     
 
 }
@@ -56,6 +60,10 @@ body.dark{
     --bannerbg: #272727;
     --reviewsbg: #6e6e6e;
     --contactbg: #272727;
+    --secleader:#5b6159;
+    --leadertitle: rgb(130, 144, 132);
+    --namecolour: #242526;
+    --darkgreen: #687c5f;
 
 }
 
@@ -406,6 +414,7 @@ section{
     margin-left: 4em;
     margin-right: 4em;
     color:var(--text-color);
+    
 }
 
 .firstbox button{
@@ -419,7 +428,15 @@ section{
     margin-top: 20px;
     padding: 10px 20px;
     margin-left: 4em;
+    cursor: pointer;
     
+}
+
+
+
+.firstbox button:hover{
+    transition: all 0.2s ease;
+    background: #819178;
 }
 
 .secondbox{
@@ -823,11 +840,30 @@ tr td{
     margin-top: 1em;
     margin-bottom: 2em;
     font-weight: 400;
-    color: #314537;
+    color: var(--text-color);
+    
     
 }
 
-.game-ui h2{
+.xp-box {
+    color:#ffffff;
+    background: var(--contactbg);
+    border-radius: 50px;
+    padding: 10px 10px;
+    height: auto;
+    text-align: center;
+    width: 150px;
+    
+
+}
+
+.xpMessage-box {
+    color: var(--text-color);
+    padding: 10px 10px;
+    font-size: 20px;
+}
+
+.game-ui h2{ /*level*/
     color:#ffffff;
     background: #6b7f62;
     border-radius: 50px;
@@ -836,14 +872,20 @@ tr td{
     text-align: center;
     float:left; /*right side*/
     width: 150px;
-    margin-top:-60px;
+    margin-top:-64px;
     word-wrap: break-word;
+    
 }
+
+.game-ui h3{
+    color: var(--text-color);
+}
+
 
 .progress-container {
   position: relative;
   height: 50px;
-  background: #56383e;
+  background: var(--contactbg);
   border-radius: 50px;
   overflow: hidden;
 }
@@ -859,7 +901,13 @@ tr td{
 
 .progress-segments div {
   flex: 1;
-  border-right: 2px solid #766060;
+  border-right: 2px solid var(--body-color);
+}
+
+.progress-segments div:last-child { /*removes the extra lines */
+  flex: 1;
+  border-right: none;
+  border-left: none;
 }
 
 /* actual XP fill */
@@ -884,6 +932,7 @@ tr td{
   max-width: 500px;
   border-collapse: collapse;
   margin-top: 10px;
+  color: var(--text-color);
   
   
 }
@@ -892,18 +941,18 @@ tr td{
 #leaderboardTable td {
   padding: 10px;
   text-align: left;
-  border-bottom: 1px solid #ddd;
+  
   
 }
 
 #leaderboardTable th {
-  background: #4d2c2c;
-  color: white;
+  background: var(--contactbg);
+  color: var(--leadertitle);
   
 }
 
 #leaderboardTable tr:nth-child(even) {
-  background: #c8c6b7;
+  background: var(--secleader);
   
 }
 
@@ -911,21 +960,28 @@ tr td{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-
     gap: 1em;
-    border: 2px solid #6acd6c;
+
 }
 
 .leaderboardcol{
     flex: 1;
-    border: 2px solid #698cd2;
-    
+    border: 2px solid transparent;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 
 }
 
-.leaderboardcol input{
-    width:auto;
-    
+.rowleader input{
+    width:400px;
+    border-radius: 50px;
+    padding: 10px 10px;
+    margin-top:10px;
+    margin-bottom:10px;
+    background-color: var(--namecolour);
+    color: white;
+    border: none;
 }
 
 .leaderboardcol h3{
@@ -934,26 +990,139 @@ tr td{
     
 }
 
-.galleryothers{
-    flex: 1;
+.rowleader{
+    display: flex;
+    flex-direction: row;
+    border: 2px solid transparent;
+    justify-content: space-evenly;
+    flex-wrap:wrap;
+}
 
+.submissionbox button{
+    color:#ffffff;
+    background: var(--contactbg);
+    border-radius: 50px;
+    padding: 10px 10px;
+    height: auto;
+    text-align: center;
+    width: 150px;
+    margin-bottom:5px;
+    border:none;
+}
+
+.submissionbox button:hover{
+    transition: all 0.2s ease;
+    background: #819178;
+}
+
+.selectionbox select{
+    color:#ffffff;
+    background: var(--contactbg);
+    border-radius: 50px;
+    padding: 10px 10px;
+    height: auto;
+    text-align: center;
+    width: auto;
+    border:none;
+}
+
+.galleryothers{
     display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 6px;
-    border: 2px solid #701e1e;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 10px;
+    border: 2px solid transparent;
+    background-color: var(--nav-color);
+    padding: 20px 20px;
+    border-radius: 20px;
     
 }
 
+.galleryothers img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* prevents stretching */
+    height: 160px;
+    display: block;
+    border-radius: 5%;
+}
+
+
 .galleryheading{
     flex: 1;
-    border: 2px solid #f39e9e;
-    flex-basis: 30%; /*makes the right column's width wider*/
+    border: 2px solid transparent;
+    flex-basis: 30%; /*right column width*/
 }
 
 .galleryheading h3{
     font-size: 30px;
     font-weight: 500;
     
+}
+
+
+.chalbuttonsrow{
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    gap: 0.5em;
+}
+
+.addchallengebutton button {
+    color:#ffffff;
+    background: var(--bannerbg);
+    border-radius: 50px;
+    padding: 10px 10px;
+    height: auto;
+    text-align: center;
+    width: 150px;
+    margin-bottom:5px;
+    border: none;
+    
+    
+    
+}
+
+.progressbuttons button:hover,
+.addchallengebutton button:hover {
+    transition: all 0.2s ease;
+    background: #819178;
+    cursor: pointer;
+    
+}
+
+#challengeFilter{
+    color:#ffffff;
+    background: var(--darkgreen);
+    border-radius: 50px;
+    padding: 10px 10px;
+    height: auto;
+    text-align: center;
+    width: 80px;
+    margin-bottom:5px;
+    font-family: 'Poppins';
+    border: none;
+    cursor: pointer;
+}
+
+
+
+#challengeFilter option{
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+}
+
+.progressbuttons button{
+    color:#ffffff;
+    background: var(--darkgreen);
+    border-radius: 50px;
+    padding: 10px 10px;
+    height: auto;
+    text-align: center;
+    width: 140px;
+    margin-bottom:5px;
+    border: none;
+    cursor: pointer;
+
 }
 
 .challenge-grid {
@@ -964,16 +1133,21 @@ tr td{
 }
 
 .challenge-card {
-  background: white;
+  background: var(--nav-color);
   border-radius: 10px;
   padding: 15px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.1);
   transition: transform 0.2s ease;
   min-height: 200px;
+  color: var(--text-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .challenge-card:hover {
   transform: translateY(-3px);
+  
 }
 
 
@@ -982,7 +1156,10 @@ tr td{
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
 }
+
+
 
 .challenge-img {
   width: 100%;
@@ -990,6 +1167,23 @@ tr td{
   object-fit: cover;
   display: block;
   border-radius: 8px;
+}
+
+.complete-btn {
+  background: #6b7f62;
+  color: white;
+  border: none;
+  border-radius: 50%;   
+  width: 35px;
+  height: 35px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.complete-btn:hover {
+  background: #9bb490;
+  transform: scale(1.1);
 }
 
 /* ===== POPUP MODAL ===== */
@@ -1058,6 +1252,26 @@ tr td{
   display: none;
 }
 
+.quiz-section {
+  position: relative;
+  margin-top: 40px;
+}
+
+.wave {
+  position: relative;
+  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.wave svg {
+  display: block;
+  width: 100%;
+  height: 120px;
+}
+
+
+
 @media (max-width: 1234px){
     section,
     .container.second section{
@@ -1110,7 +1324,35 @@ tr td{
 
 
 
+    .galleryothers img:first-child{
+        display:none;
+        
+    }
+        
+    .galleryothers img:nth-child(2){
+        display:none;
+    }
 
+    .galleryothers img:nth-child(3){
+        display:none;
+    }
+    .galleryothers img:nth-child(4){
+        display:none;
+    }
+
+    .galleryothers img:nth-child(5){
+        display:none;
+    }
+
+    .galleryothers img:nth-child(6){
+        display:none;
+    }
+    .galleryothers img:nth-child(7){
+        display:none;
+    }
+    .galleryothers img:nth-child(8){
+        display:none;
+    }
 
 
 }
@@ -1150,27 +1392,16 @@ tr td{
     .galleryothers{
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         gap: 1px;
+    
+
     }
 
+    .chalbuttonsrow{
+        align-items: center;
+        flex-direction: column;
+    }
 
     
-    .galleryothers img:first-child{
-        display:none;
-    }
-        
-    .galleryothers img:nth-child(2){
-        display:none;
-    }
 
-    .galleryothers img:nth-child(3){
-        display:none;
-    }
-    .galleryothers img:nth-child(4){
-        display:none;
-    }
-
-
-    
-    
 
 }

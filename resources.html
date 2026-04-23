@@ -72,12 +72,22 @@
                     
                 </div>
 
-                <p id="xpMessage"></p>
 
-                <p><span id="xp">0</span> / <span id="xpNeeded">100</span> XP</p>
+                <div class="xpMessage-box">
+                    <p id="xpMessage"></p>
+                </div>
 
-                <button onclick="gainXP(20)">Complete Challenge (+20 XP)</button>
+                
 
+                <div class="xp-box">
+                    <p><span id="xp">0</span> / <span id="xpNeeded">100</span> XP</p>
+                </div>
+                
+
+                
+                <!-- 
+                <button onclick="gainXP(20)">test</button>
+                -->
                 
 
                 <div id="reward"></div>
@@ -98,10 +108,22 @@
                         <tbody></tbody>
                         </table>
 
-                        <input type="text" id="username" placeholder="Your name">
-                        <button onclick="submitScore()">Submit Score</button>
+                        
+                        <div class = rowleader>
+                            <input type="text" id="username" placeholder="Your name">
+                            <div class="submissionbox">
+                                <button onclick="submitScore()">Submit Score</button>
 
-                        <select id="titleSelector" onchange="changeTitle()"></select>
+                            </div>
+                            
+                            <div class="selectionbox">
+                                <select id="titleSelector" onchange="changeTitle()"></select>
+
+                            </div>
+                        </div>
+                        
+
+                        
                     </div>
                     <div class = "galleryheading">
                         <h3>Photos taken by challengers</h3>
@@ -109,15 +131,19 @@
                     
                         <div class = "galleryothers">
                             
-                            <img src="img/profile1.png" alt="" class="card-img">
-                            <img src="img/profile1.png" alt="" class="card-img">
-                            <img src="img/profile1.png" alt="" class="card-img">
-                            <img src="img/profile1.png" alt="" class="card-img">
-                            <img src="img/profile1.png" alt="" class="card-img">
-                            <img src="img/profile1.png" alt="" class="card-img">
-                            <img src="img/profile1.png" alt="" class="card-img">
-                            <img src="img/profile1.png" alt="" class="card-img">
-                            <img src="img/profile1.png" alt="" class="card-img">
+                            <img src="img/gallery1.png" alt="" class="card-img">
+                            <img src="img/gallery2.png" alt="" class="card-img">
+                            <img src="img/gallery3.png" alt="" class="card-img">
+                            <img src="img/gallery4.png" alt="" class="card-img">
+                            <img src="img/gallery5.png" alt="" class="card-img">
+                            <img src="img/gallery6.png" alt="" class="card-img">
+                            <img src="img/gallery3.png" alt="" class="card-img">
+                            <img src="img/gallery2.png" alt="" class="card-img">
+                            <img src="img/gallery5.png" alt="" class="card-img">
+                            <img src="img/gallery4.png" alt="" class="card-img">
+                            <img src="img/gallery1.png" alt="" class="card-img">
+                            <img src="img/gallery6.png" alt="" class="card-img">
+
 
                         </div>
                     </div>
@@ -125,34 +151,42 @@
 
                 <div class="challenge-grid" id="challengeGrid"></div>
                 
-
-                <button onclick="addChallenge()">+ Add Challenge</button>
-
-                <select id="challengeFilter" onchange="renderChallenges()">
-                    <option value="all" selected>All</option>
-                    <option value="daily">Daily</option>
-                    <option value="weekly">Weekly</option>
-                </select>
-
-                <button onclick="showTab('active')">In Progress</button>
-                <button onclick="showTab('completed')">Completed</button>
+                <div class="chalbuttonsrow">
+                    <div class ="addchallengebutton">
+                        <button onclick="addChallenge()">+ Add Challenge</button>
+                    </div>
+                
+                    <div class = "filterbutton">
+                        <select id="challengeFilter" onchange="renderChallenges()">
+                            <option value="all" selected>All</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                        </select>
+                    </div>
+                
+                    <div class = "progressbuttons">
+                        <button onclick="showTab('active')">In Progress</button>
+                        <button onclick="showTab('completed')">Completed</button>
+                    </div>
+                </div>
+                
+                
                 <h3 id="activeTitle">In Progress</h3>
                 <div class="challenge-grid" id="activeChallenges"></div>
 
                 <h3 id="completedTitle">Completed</h3>
                 <div class="challenge-grid" id="completedChallenges"></div>
 
-                <h3>Quick Quiz</h3>
 
-                <div id="quizBox" class="quiz-box">
-                    <h4 id="questionText">Question here</h4>
+            <div class="full-width-section">
 
-                    <div id="answerButtons"></div>
+            </div>
+            
 
-                    <p id="quizFeedback"></p>
 
-                    
-                </div>
+                
+
+
 
                 <div id="popupModal" class="modal">
                 <div class="modal-content">
@@ -170,6 +204,31 @@
                 </div>
             </div>
 
+        </div>
+
+
+        <div class = "quizsection">
+            <h3>Quick Quiz</h3>
+
+            <div id="quizBox" class="quiz-box">
+                <h4 id="questionText">Question here</h4>
+
+                <div id="answerButtons"></div>
+
+                <p id="quizFeedback"></p>
+
+                
+                
+
+            </div>
+
+            <div class="wave">
+                <svg viewBox="0 0 1440 320">
+                <path fill="#6b7f62" fill-opacity="1"
+                    d="M0,192L60,181.3C120,171,240,149,360,144C480,139,600,149,720,165.3C840,181,960,203,1080,192C1200,181,1320,139,1380,117.3L1440,96V320H0Z">
+                </path>
+                </svg>
+            </div>
         </div>
         
                        

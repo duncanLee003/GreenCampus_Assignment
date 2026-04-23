@@ -44,6 +44,7 @@ body.addEventListener("click" , e =>{
 
 
 
+//script for resources
 let unlockedTitles = [];
 let selectedTitle = "";
 
@@ -54,12 +55,11 @@ let totalTasks = 5;
 let streak = 0;
 let lastActiveDate = null;
 
-// XP needed per level
 function xpToNextLevel(lvl) {
   return lvl * 100;
 }
 
-// Gain XP from actions
+
 function gainXP(amount) {
   amount = Number(amount);
   if (isNaN(amount)) return;
@@ -79,11 +79,11 @@ function gainXP(amount) {
 }
 
 const milestones = [
-  { percent: 0, message: "🌱 Just starting out" },
-  { percent: 25, message: "🔥 Getting into it" },
-  { percent: 50, message: "🚀 Halfway there" },
-  { percent: 75, message: "💪 Almost there" },
-  { percent: 100, message: "👑 Level up soon!" }
+  { percent: 0, message: "A new start!" },
+  { percent: 25, message: "Keep going!" },
+  { percent: 50, message: "Halfway there!" },
+  { percent: 75, message: "Almost there!" },
+
 ];
 
 
@@ -104,7 +104,7 @@ function createSegments() {
 
   if (!container) return; // 🔥 prevent crash
 
-  for (let i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i++) { //maybe modify to get rid of segment at the end of bar
     const seg = document.createElement("div");
     container.appendChild(seg);
   }
@@ -316,47 +316,102 @@ function changeTitle() {
 
 const defaultChallenges = [
   {
-    name: "Run 5km",
+    name: "Reduce food waste",
     type: "daily",
-    description: "Complete a 5km run",
+    description: "Use leftovers and avoid wasting food",
     daysLeft: 2,
     xpReward: 50,
     completed: false,
     image: "../img/carddefault.png"
   },
   {
-    name: "Drink 2L Water",
+    name: "Litter-picking in town",
     type: "daily",
-    description: "Stay hydrated today",
+    description: "Pick up litter in town around the campus",
+    daysLeft: 1,
+    xpReward: 70,
+    completed: false,
+    image: "img/carddefault.png"
+  },
+  {
+    name: "Use reusable bottles",
+    type: "daily",
+    description: "Avoid single-use plastic bottles",
     daysLeft: 1,
     xpReward: 50,
     completed: false,
     image: "img/carddefault.png"
   },
   {
-    name: "Read for 30 mins",
+    name: "Turn off standby devices",
     type: "daily",
-    description: "Improve your knowledge",
-    daysLeft: 1,
-    xpReward: 50,
-    completed: false,
-    image: "img/carddefault.png"
-  },
-  {
-    name: "Workout 3 times",
-    type: "weekly",
-    description: "Complete 3 workouts this week",
+    description: "Switch off electronics not in use",
     daysLeft: 5,
     xpReward: 50,
     completed: false,
     image: "img/carddefault.png"
   },
   {
-    name: "No sugar day",
+    name: "Use bio-degradable containers and cutlery",
     type: "daily",
-    description: "Avoid sugar for a full day",
+    description: "Avoid using plastic",
     daysLeft: 1,
     xpReward: 50,
+    completed: false,
+    image: "img/carddefault.png"
+  },
+
+  {
+    name: "Recycle waste",
+    type: "daily",
+    description: "Recycle at least 5 items today",
+    daysLeft: 1,
+    xpReward: 50,
+    completed: false,
+    image: "img/carddefault.png"
+  },
+  {
+    name: "Recycle properly",
+    type: "weekly",
+    description: "Sort waste correctly in the designated bins",
+    daysLeft: 7,
+    xpReward: 100,
+    completed: false,
+    image: "img/carddefault.png"
+  },
+  {
+    name: "Switch off unused lights",
+    type: "daily",
+    description: "Save energy at home",
+    daysLeft: 1,
+    xpReward: 20,
+    completed: false,
+    image: "img/carddefault.png"
+  },
+   {
+    name: "Walk or cycle",
+    type: "weekly",
+    description: "Avoid vehical transport for a week",
+    daysLeft: 1,
+    xpReward: 100,
+    completed: false,
+    image: "img/carddefault.png"
+  },
+  {
+    name: "Plant a tree",
+    type: "weekly",
+    description: "Contribute to greenery",
+    daysLeft: 7,
+    xpReward: 100,
+    completed: false,
+    image: "img/carddefault.png"
+  },
+  {
+    name: "Buy local sustainable products",
+    type: "weekly",
+    description: "Buy from local shops",
+    daysLeft: 1,
+    xpReward: 70,
     completed: false,
     image: "img/carddefault.png"
   }
@@ -414,12 +469,14 @@ function renderChallenges() {
       <p><strong>${challenge.type}</strong></p>
 
       <div class="challenge-footer">
-        <span>Ends in ${challenge.daysLeft} days</span>
+        <span>
+          Ends in ${challenge.daysLeft} ${challenge.daysLeft == 1 ? "day" : "days"}
+        </span>
         <div>
           ${
             challenge.completed
               ? "✅ Completed"
-              : `<button onclick="completeChallenge(${index})">✔</button>`
+              : `<button class="complete-btn" onclick="completeChallenge(${index})">✔</button>`
           }
         </div>
       </div>
