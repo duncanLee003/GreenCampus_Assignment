@@ -475,7 +475,7 @@ function renderChallenges() {
         <div>
           ${
             challenge.completed
-              ? "✅ Completed"
+              ? "Completed"
               : `<button class="complete-btn" onclick="completeChallenge(${index})">✔</button>`
           }
         </div>
@@ -543,7 +543,7 @@ function completeChallenge(index) {
 
   challenge.completed = true;
 
-  // ✅ SAVE IMMEDIATELY
+  //saves
   localStorage.setItem("challenges", JSON.stringify(challenges));
 
   gainXP(Number(challenge.xpReward) || 0);
@@ -589,14 +589,14 @@ function showTab(type) {
     activeGrid.style.display = "grid";
     completedGrid.style.display = "none";
 
-    activeTitle.style.display = "block";     // ✅ show
-    completedTitle.style.display = "none";   // ❌ hide
+    activeTitle.style.display = "block";     //shows
+    completedTitle.style.display = "none";   //hides
   } else {
     activeGrid.style.display = "none";
     completedGrid.style.display = "grid";
 
-    activeTitle.style.display = "none";      // ❌ hide
-    completedTitle.style.display = "block";  // ✅ show
+    activeTitle.style.display = "none";      //hides
+    completedTitle.style.display = "block";  //shows
   }
 }
 
@@ -694,8 +694,7 @@ function nextQuestion() {
     if (score === total) {
       message += "🔥 Perfect score!\n";
       
-      const unlocked = unlockQuizTitle(); // 👈 change here
-
+      const unlocked = unlockQuizTitle(); 
       if (unlocked) {
         message += "🏆 You unlocked: 🧠 Quiz Master!";
       } else {
@@ -741,9 +740,8 @@ function unlockQuizTitle() {
   return false; // ❌ already owned
 }
 
-// =========================
+
 // INIT
-// =========================
 document.addEventListener("DOMContentLoaded", () => {
   loadProgress();
 
@@ -756,7 +754,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   showTab("active");
 
-  // 🔥 reset question index if new day
+  //reset quiz if new day
   const today = new Date().toDateString();
   if (quizCompletedDate !== today) {
     currentQuestion = 0;

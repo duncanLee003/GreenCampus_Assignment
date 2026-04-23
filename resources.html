@@ -110,7 +110,7 @@
 
                         
                         <div class = rowleader>
-                            <input type="text" id="username" placeholder="Your name">
+                            <input type="text" id="username" placeholder="Your name"> 
                             <div class="submissionbox">
                                 <button onclick="submitScore()">Submit Score</button>
 
@@ -178,28 +178,23 @@
                 <div class="challenge-grid" id="completedChallenges"></div>
 
 
-            <div class="full-width-section">
+                <div class="full-width-section"> </div>
 
-            </div>
             
 
-
-                
-
-
-
                 <div id="popupModal" class="modal">
-                <div class="modal-content">
-                    <h3 id="modalTitle">Add Challenge</h3>
+                    <div class="modal-content">
+                        <h3 id="modalTitle">Add Challenge</h3>
 
-                    <input id="challengeName" placeholder="Challenge name">
-                    <input id="challengeType" placeholder="Type (Daily/Weekly)">
-                    <input id="challengeDesc" placeholder="Description">
-                    <input id="challengeDays" type="number" placeholder="Days left">
+                        <input id="challengeName" placeholder="Challenge name">
+                        <input id="challengeType" placeholder="Type (Daily/Weekly)">
+                        <input id="challengeDesc" placeholder="Description">
+                        <input id="challengeDays" type="number" placeholder="Days left">
 
-                    <div class="modal-buttons">
-                    <button onclick="confirmChallenge()">Save</button>
-                    <button onclick="closeModal()">Cancel</button>
+                        <div class="modal-buttons"></div>
+                        <button onclick="confirmChallenge()">Save</button>
+                        <button onclick="closeModal()">Cancel</button>
+                        
                     </div>
                 </div>
             </div>
@@ -217,24 +212,95 @@
 
                 <p id="quizFeedback"></p>
 
-                
-                
-
             </div>
-
-            <div class="wave">
-                <svg viewBox="0 0 1440 320">
-                <path fill="#6b7f62" fill-opacity="1"
-                    d="M0,192L60,181.3C120,171,240,149,360,144C480,139,600,149,720,165.3C840,181,960,203,1080,192C1200,181,1320,139,1380,117.3L1440,96V320H0Z">
-                </path>
-                </svg>
-            </div>
+            
+            
         </div>
         
-                       
+        <!--          
+        <div class="wave">
+            <svg viewBox="0 0 1440 320">
+            <path fill="#6b7f62" fill-opacity="1"
+                d="M0,192L60,181.3C120,171,240,149,360,144C480,139,600,149,720,165.3C840,181,960,203,1080,192C1200,181,1320,139,1380,117.3L1440,96V320H0Z">
+            </path>
+            </svg>
+        </div>
+        -->
 
+        <div class ="contactcontainer">
+            
+    
+            
+            
+            <div class="contact-box">
+                <div class="contact-left">
+                    <h3>Send your request</h3>
+                    <form>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Name</label>
+                                <input type="text" placeholder="Your Name">
+                            </div>
+                            <div class="input-group">
+                                <label>Phone</label>
+                                <input type="text" placeholder="+44 123 456 7890">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Email</label>
+                                <input type = "email" placeholder="email@example.com">
+                            </div>
+                            <div class="input-group">
+                                <label>Subject</label>
+                                <input type="text" placeholder="Enquiries ">
+                            </div>
+                        </div>
 
+                        <label>Message</label>
+                        <textarea rows="5" placeholder = "Your message here..."></textarea>
 
+                        <div class = "contactsend">
+                            <button type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class ="contact-right">
+                    <div class="details">
+                        <h3>Reach Us</h3>
+
+                        <table>
+                            <tr>
+                                <td>Email</td>
+                                <td>contactus@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>+44 0987 654321</td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td>Lichfield Street <br> Burton-On-Trent <br> Staffordshire <br> UK <br> DE14 3RL </td> 
+                            </tr>
+                        </table>
+                        <div class = "contactmap">
+                            <h3>Find Us</h3>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2412.2326543641484!2d-1.6304478000000002!3d52.8001437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a024776346265%3A0x1e14e88c557a62a1!2sBurton%20and%20South%20Derbyshire%20College!5e0!3m2!1sen!2suk!4v1776350592949!5m2!1sen!2suk" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+               
+                
+                
+            </div>
+        </div>
+ 
+        <div class ="footer">
+            <p>&copy; 2024 GreenCampus. All rights reserved.</p>
+        </div>
     </body>
     <script src = "script.js"></script>
 

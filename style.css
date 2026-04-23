@@ -31,7 +31,7 @@ a.active-page {
     --body-color: #ece4d5;
     --nav-color: #f3efe8;
     --side-nav: #4b5248;
-    --text-color: #000000; 
+    --text-color: #203d29; 
     --search-bar:#b0bbab;
     --search-text: #000000;
     --bannerbg: #687c5f;
@@ -41,6 +41,7 @@ a.active-page {
     --leadertitle: #ece4d5;
     --namecolour: #7a5e62;
     --darkgreen: #314537;
+    --reviewcard: #ece4d5;
     
 
 }
@@ -58,12 +59,13 @@ body.dark{
     --text-color: #CCC; 
     --search-bar:#242526;
     --bannerbg: #272727;
-    --reviewsbg: #6e6e6e;
+    --reviewsbg: #2e2e2e;
     --contactbg: #272727;
     --secleader:#5b6159;
     --leadertitle: rgb(130, 144, 132);
     --namecolour: #242526;
     --darkgreen: #687c5f;
+    --reviewcard: #6e6e6e;
 
 }
 
@@ -394,7 +396,7 @@ section{
 
 .firstbox{
     flex: 1;
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
     margin-top: 10em;
     color:var(--text-color);
 
@@ -441,7 +443,7 @@ section{
 
 .secondbox{
     flex: 1;
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
 
 }
 
@@ -450,7 +452,7 @@ section{
 .container2{
     display: flex;
     background-color: var(--bannerbg);
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
     min-height: 48vh;
     align-items: center;
     justify-content: center;
@@ -462,7 +464,7 @@ section{
     flex-direction: row;
     justify-content: space-evenly;
     align-items: center;
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
     gap: 1em;
 
 
@@ -474,7 +476,7 @@ section{
     flex-direction: column;
     gap: 1em;
     align-items: center;
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
     max-width: 400px;
 }
 
@@ -483,7 +485,7 @@ section{
     flex-direction: column;
     gap: 1em;
     align-items: center;
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
     max-width: 400px;
 }
 
@@ -492,23 +494,23 @@ section{
     flex-direction: column;
     gap: 1em;
     align-items: center;
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
     max-width: 400px;
 }
 
 .recycleIcon{
     min-height: 50px;
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
 }
 
 .bulbIcon{
     min-height: 50px;
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
 }
 
 .treeIcon{
     min-height: 50px;
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
 }
 
 .recycleInfo{
@@ -517,7 +519,7 @@ section{
     flex-direction: row;
     justify-content: space-evenly;
     text-align: center;
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
     min-width: 10px;
     flex-wrap: wrap;
 
@@ -558,7 +560,7 @@ section{
 
 .videobox{
     flex: 1;
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
     color:var(--text-color);
 
 }
@@ -567,15 +569,15 @@ section{
 
 .videosumbox{
     flex: 1;
-    border: 2px solid #ffffff;
+    border: 2px solid transparent;
     align-items: center;
+    
     
 
 }
 
 .videosumbox p{
     font-size: 20px;
-
     margin-left: 4em;
     margin-right: 4em;
     color:var(--text-color);
@@ -593,22 +595,34 @@ section{
 .slide-container{
     max-width: 1600px;
     width: 100%;
-    background-color: grey;
+    background-color: var(--reviewsbg);
     padding: 40px 0;
+
 }
 
 .slide-content{
     margin: 0 40px;
-    background-color: yellow;
+    background-color: var(--reviewsbg);
     overflow: hidden;
     border-radius: 25px;
+
 }
 
 .card{
     border-radius: 25px;
-    background-color: white;
+    background-color: var(--reviewcard);
+    height: 40vh;
+    align-items: center;
+    display: flex;
 
 }
+
+/*
+.card:hover{
+    transform: scale(120%);
+    transition: all 0.3s ease;
+}
+*/
 
 .image-content,
 .card-content{
@@ -636,6 +650,7 @@ section{
     background: white;
     padding: 3px;
 
+
 }
 
 .card-image .card-img{
@@ -643,7 +658,7 @@ section{
     width: 100%;
     object-fit: cover;
     border-radius:50%;
-    border: 4px solid black;
+
 }
 
 .name{
@@ -660,8 +675,19 @@ section{
 
 
 .swiper-navBtn{
-    color:blue;
+    color:var(--secleader);
     transition: color 0.3s ease;
+    background-color: var(--darkgreen);
+    padding: 5px 5px;
+    border-radius: 5%;
+    opacity: 0.7;
+    
+
+}
+
+.swiper-navBtn:hover{
+    color: rgb(255, 255, 255);
+    transition: all 0.3s ease;
 }
 
 .swiper-navBtn::before,
@@ -678,12 +704,12 @@ section{
 }
 
 .swiper-pagination-bullet{
-    background-color: blue;
+    background-color: rgb(104, 104, 104);
     opacity: 1;
 }
 
 .swiper-pagination-bullet-active{
-    background-color: red;
+    background-color: rgb(151, 151, 151);
 }
 
 
@@ -711,7 +737,7 @@ section{
 .details{
     flex-basis: 40%;
     padding: 40px;
-    background:#64474c;
+    background:var(--contactbg);
     color: white;
 }
 
@@ -720,7 +746,9 @@ section{
     height: 100%;
 }
 
-
+.contactmap h3{
+    margin-top: 50px;
+}
 
 
 
@@ -733,50 +761,66 @@ section{
 
 .input-row .input-group{
     flex-basis: 45%;
+    
 
 }
 
 input{
     width: 100%;
     border: none;
-    border-bottom: 1px solid #ccc;
     outline: none;
     padding-bottom: 10px;
     padding: 10px;
     box-sizing: border-box;
+    background-color: var(--body-color);
+    
+    
 }
+
+
 
 textarea{
     width: 100%;
-    border: 1px solid #ccc;
-    outline: none;
+    border: none;
     padding: 10px;
     box-sizing: border-box;
+    background-color: var(--body-color);
+    color:var(--text-color);
 
 
 }
+
+
 
 label{
     margin-bottom: 6px;
     display: block;
-    color: #1c00b5;
+    color: var(white);
+}
+
+.input-row .input-group label{
+    color: white;
+}
+
+.contact-left label{
+    color: white;
 }
 
 .contactsend button{
-    background: #1c00b5;
+    background: var(--body-color);
     width: 100px;
     border: none;
     outline: none;
-    color: #fff;
+    color: var(--text-color);
     height: 35px;
     border-radius: 30px;
     margin-top: 20px;
-    box-shadow: 0px 5px 15px 0px rgba(28,0,181,0.3);
+
 
 }
 
 .contact-left h3{
-    color: #1c00b5;
+    color: white;
     font-weight: 600;
     margin-bottom: 30px;
 }
@@ -784,6 +828,7 @@ label{
 .contact-right h3{
     font-weight: 600;
     margin-bottom: 20px;
+    color: white;
     
 }
 
@@ -796,7 +841,13 @@ tr td{
 }
 
 
-
+.footer{
+    background-color: #2b1e20;
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+    height: 30vh;
+}
 
 
 
@@ -982,6 +1033,10 @@ tr td{
     background-color: var(--namecolour);
     color: white;
     border: none;
+}
+
+.rowleader input::placeholder{
+    color: white;
 }
 
 .leaderboardcol h3{
@@ -1252,11 +1307,25 @@ tr td{
   display: none;
 }
 
-.quiz-section {
-  position: relative;
-  margin-top: 40px;
+.quizsection {
+    position: relative;
+    margin-top: 40px;
+    background-color: #314537;
+    height: 200vh;
+    padding: 0 20px;
+    align-items: center;
+    display:flex;
+    flex-direction: column;
 }
 
+.quizsection h3{
+    font-size: 50px;
+    font-weight: 500;
+    color: white;
+    margin-top: 20px;
+}
+
+/*
 .wave {
   position: relative;
   width: 100vw;
@@ -1269,7 +1338,7 @@ tr td{
   width: 100%;
   height: 120px;
 }
-
+*/
 
 
 @media (max-width: 1234px){
@@ -1316,6 +1385,7 @@ tr td{
         margin-left: auto;
         margin-right: auto;
         font-size: 17px;
+        margin-bottom: 7em;
     }
 
     .contact-box{
@@ -1402,6 +1472,8 @@ tr td{
     }
 
     
-
+    .firstbox{
+        align-items: center;
+    }
 
 }
