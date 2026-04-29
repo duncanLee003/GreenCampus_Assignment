@@ -31,7 +31,7 @@ a.active-page {
     --body-color: #ece4d5;
     --nav-color: #f3efe8;
     --side-nav: #4b5248;
-    --text-color: #203d29; 
+    --text-color: #18291d; 
     --search-bar:#b0bbab;
     --search-text: #000000;
     --bannerbg: #687c5f;
@@ -42,6 +42,7 @@ a.active-page {
     --namecolour: #7a5e62;
     --darkgreen: #314537;
     --reviewcard: #ece4d5;
+    --quizback: #343a31;
     
 
 }
@@ -66,6 +67,7 @@ body.dark{
     --namecolour: #242526;
     --darkgreen: #687c5f;
     --reviewcard: #6e6e6e;
+    --quizback:#2d2d2d;
 
 }
 
@@ -609,7 +611,7 @@ section{
 }
 
 .card{
-    border-radius: 25px;
+    border-radius: 0px;
     background-color: var(--reviewcard);
     height: 40vh;
     align-items: center;
@@ -622,7 +624,7 @@ section{
     transform: scale(120%);
     transition: all 0.3s ease;
 }
-*/
+
 
 .image-content,
 .card-content{
@@ -632,23 +634,34 @@ section{
     padding: 10px 14px;
 }
 
+*/
+
 .image-content{
     position: relative;
     row-gap: 5px;
 
 }
 
-
+.topcard{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1em;
+    padding: 10px 14px;
+}
 
 
 
 .card-image{
     position: relative;
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     border-radius: 50%;
     background: white;
     padding: 3px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
 
 
 }
@@ -661,17 +674,35 @@ section{
 
 }
 
+.card-content{
+    display:flex;
+    align-items: center;
+    padding: 10px;
+}
+
+.card-content img{
+    border-radius: 5%;
+}
+
 .name{
-    font-size: 18px;
+    font-size: 27px;
+    font-weight: 500;
+    color: #393838;
+}
+
+.type{
+    font-size: 20px;
     font-weight: 500;
     color: #393838;
 }
 
 .description{
-    font-size: 14px;
+    font-size: 16px;
     color: #000000;
     text-align: center;
 }
+
+
 
 
 .swiper-navBtn{
@@ -773,6 +804,7 @@ input{
     padding: 10px;
     box-sizing: border-box;
     background-color: var(--body-color);
+    color:var(--text-color);
     
     
 }
@@ -847,12 +879,31 @@ tr td{
     padding: 10px 0;
     color: white;
     height: 30vh;
+    display:flex;
+    justify-content: center;
+    gap:10em;
 }
 
 
 
+.footer1{
+    color:white;
+    font-size: 18px;
     
+ 
+}
 
+.footerleft{
+    text-align: left;
+}
+
+.footerright{
+    text-align: right;
+    font-size:30px;
+}
+.socials{
+    height: 50px;
+}
 
 
 /* Duncan's code for resources.html */
@@ -1286,7 +1337,7 @@ tr td{
 .quiz-box {
   margin-top: 20px;
   padding: 15px;
-  background: white;
+  background: rgb(102, 117, 110);
   border-radius: 10px;
   max-width: 500px;
 }
@@ -1297,6 +1348,7 @@ tr td{
   padding: 10px;
   width: 100%;
   cursor: pointer;
+  background-color: #aaaaa0;
 }
 
 #activeChallenges {
@@ -1310,7 +1362,7 @@ tr td{
 .quizsection {
     position: relative;
     margin-top: 40px;
-    background-color: #314537;
+    background-color: var(--quizback);
     height: 200vh;
     padding: 0 20px;
     align-items: center;
@@ -1341,7 +1393,7 @@ tr td{
 */
 
 
-@media (max-width: 1234px){
+@media (max-width: 1370px){
     section,
     .container.second section{
         flex-direction: column;
@@ -1424,6 +1476,13 @@ tr td{
         display:none;
     }
 
+    .card-content img{
+        display:none;
+    }
+
+    .card-content{
+        flex-direction: column;
+    }
 
 }
 
@@ -1475,5 +1534,7 @@ tr td{
     .firstbox{
         align-items: center;
     }
+
+
 
 }
