@@ -1,55 +1,995 @@
+
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>GreenCampus - Events</title>
-        <meta http-equiv="X-UA-Compatible" content ="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <link href='https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined' rel="stylesheet">
-        <style>
-            .main-content {
-                max-width: 1200px;
-                margin: 0 auto;
-                padding: 2rem;
-                width: 100%;
-                box-sizing: border-box;
-            }
-            
-            @media (max-width: 768px) {
-                .main-content {
-                    padding: 1rem;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <nav>
-            <div class ="nav-bar">
-                <span class="logo"><a href="#">GreenCampus</a></span>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenCampus - Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-                <div class ="menu">
-                    <ul class="nav-links">
-                        <li><a href = "index.html" >Home</a></li>
-                        <li><a href = "events.html" class="active-page">Events</a></li>
-                        <li><a href = "tips.html" >Tips</a></li>
-                        <li><a href = "resources.html" >Resources</a></li>
-                        <li><a href = "aboutus.html" >About Us</a></li>
+        :root {
+            --green-dark: #1b5e20;
+            --green-mid: #2e7d32;
+            --green-light: #4caf50;
+            --green-pale: #e8f5e9;
+            --green-accent: #a5d6a7;
+            --bg: #d4c4ae;
+            --white: #ffffff;
+            --text: #333333;
+            --text-muted: #666666;
+            --shadow-sm: 0 4px 12px rgba(0,0,0,0.08);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.12);
+            --shadow-lg: 0 16px 40px rgba(0,0,0,0.15);
+            --radius: 12px;
+        }
 
-                    </ul> 
-                </div>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(d4c4ae);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
 
-                </span>
+        .nav-bar {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo a {
+            font-family: 'Poppins', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--green-dark);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #555;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.3px;
+            transition: color 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--green-light);
+            transform: scaleX(0);
+            transition: transform 0.2s;
+        }
+
+        .nav-links a:hover { color: var(--green-dark); }
+        .nav-links a:hover::after { transform: scaleX(1); }
+
+        /* ── HERO ── */
+        .page-content { padding-top: 64px; }
+
+        .hero {
+            max-width: 1200px;
+            margin: 48px auto;
+            padding: 0 24px;
+            display: flex;
+            gap: 48px;
+            align-items: center;
+        }
+
+        .hero-content { flex: 1; }
+
+        .hero-content h1 {
+            font-family: 'Poppins', serif;
+            font-size: 3.2rem;
+            color: var(--green-dark);
+            margin-bottom: 16px;
+            line-height: 1.15;
+            letter-spacing: -1px;
+        }
+
+        .hero-content p {
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            max-width: 440px;
+            line-height: 1.7;
+        }
+
+        .hero-image {
+            flex: 1;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .hero-image:hover img { transform: scale(1.03); }
+
+        /* ── EVENTS GRID ── */
+        .section-label {
+            max-width: 1200px;
+            margin: 0 auto 16px;
+            padding: 0 24px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--green-mid);
+        }
+
+        .events-grid {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 24px;
+        }
+
+        .event-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .event-card-img {
+            position: relative;
+            overflow: hidden;
+            height: 200px;
+        }
+
+        .event-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .event-card:hover .event-card-img img { transform: scale(1.05); }
+
+        .event-info { padding: 20px; }
+
+        .event-date {
+            background: var(--green-pale);
+            color: var(--green-mid);
+            font-size: 0.82rem;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 10px;
+            letter-spacing: 0.3px;
+        }
+
+        .event-title {
+            font-family: 'Poppins', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--green-dark);
+            margin-bottom: 6px;
+        }
+
+        .event-location {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .event-description {
+            color: #555;
+            font-size: 0.92rem;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            line-height: 1.6;
+        }
+
+        .event-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .event-tag {
+            font-size: 0.82rem;
+            color: var(--green-mid);
+            font-weight: 500;
+        }
+
+        .register-btn {
+            background: var(--green-dark);
+            color: white;
+            border: none;
+            padding: 7px 18px;
+            border-radius: 24px;
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            font-family: 'Poppins', sans-serif;
+            letter-spacing: 0.3px;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .register-btn:hover {
+            background: var(--green-mid);
+            transform: scale(1.04);
+        }
+
+        /* ── BOTTOM SECTION ── */
+        .bottom-section {
+            max-width: 1200px;
+            margin: 0 auto 60px;
+            padding: 0 24px;
+            display: grid;
+            grid-template-columns: 1fr 400px;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .left-column {
+            display: flex;
+            flex-direction: column;
+            gap: 28px;
+        }
+
+        .category-box {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 22px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .category-title {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 14px;
+            color: var(--green-dark);
+        }
+
+        .tags { display: flex; flex-wrap: wrap; gap: 10px; }
+
+        .tag {
+            background: var(--green-pale);
+            color: var(--green-mid);
+            padding: 7px 16px;
+            border-radius: 24px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        .tag:hover { border-color: var(--green-light); }
+        .tag.active { background: var(--green-dark); color: white; }
+
+        .featured-event {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .featured-event img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .featured-event-body { padding: 22px; }
+
+        .featured-badge {
+            background: var(--green-dark);
+            color: white;
+            display: inline-block;
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .featured-event-body h3 {
+            font-family: 'Poppins', serif;
+            font-size: 1.2rem;
+            color: var(--green-dark);
+            margin-bottom: 10px;
+        }
+
+        .featured-event-body p {
+            color: #555;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .featured-date {
+            margin-top: 14px;
+            color: var(--green-mid);
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+
+        /* ── CALENDAR ── */
+        .calendar-box {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 24px;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .cal-month-year {
+            font-family: 'Poppins', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--green-dark);
+        }
+
+        .cal-nav {
+            background: var(--green-pale);
+            border: none;
+            color: var(--green-dark);
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, transform 0.15s;
+        }
+
+        .cal-nav:hover { background: var(--green-accent); transform: scale(1.1); }
+
+        .cal-table { width: 100%; border-collapse: collapse; }
+
+        .cal-table th {
+            text-align: center;
+            padding: 8px 4px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--green-mid);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .cal-table td { text-align: center; padding: 3px; }
+
+        .cal-day {
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 0.88rem;
+            transition: all 0.18s;
+            position: relative;
+            color: var(--text);
+        }
+
+        .cal-day:hover { background: var(--green-pale); color: var(--green-dark); }
+
+        .cal-day.today {
+            background: var(--green-dark);
+            color: white;
+            font-weight: 600;
+        }
+
+        .cal-day.selected {
+            background: var(--green-light);
+            color: white;
+            box-shadow: 0 2px 10px rgba(76,175,80,0.4);
+        }
+
+        .cal-day.has-event::after {
+            content: '';
+            position: absolute;
+            bottom: 4px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            background: #ff7043;
+        }
+
+        .cal-day.today.has-event::after { background: rgba(255,255,255,0.8); }
+        .cal-day.selected.has-event::after { background: white; }
+
+        .cal-day.empty { cursor: default; }
+        .cal-day.empty:hover { background: none; }
+
+        .event-popup {
+            margin-top: 18px;
+            padding: 14px 16px;
+            border-radius: 10px;
+            font-size: 0.88rem;
+            border-left: 4px solid var(--green-mid);
+            background: var(--green-pale);
+            color: var(--green-dark);
+            min-height: 52px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.25s ease;
+        }
+
+        .event-popup.no-event {
+            background: #f5f5f5;
+            border-left-color: #ccc;
+            color: #999;
+        }
+
+        .event-popup .popup-icon {
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* ── ILLUSTRATION ── */
+        .illustration {
+            max-width: 1200px;
+            margin: 20px auto 60px;
+            padding: 0 24px;
+            text-align: center;
+        }
+
+        .illustration img {
+            max-height: 280px;
+            border-radius: var(--radius);
+        }
+
+        /* ── CONTACT ── */
+        .contact-section {
+            background: linear-gradient(135deg, var(--green-dark), var(--green-mid));
+            padding: 70px 24px;
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-form { flex: 1; }
+
+        .contact-form h2 {
+            font-family: 'Poppins', serif;
+            font-size: 2.2rem;
+            color: white;
+            margin-bottom: 24px;
+            letter-spacing: -0.5px;
+        }
+
+        .contact-form input[type="text"] {
+            width: 100%;
+            padding: 16px 18px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            margin-bottom: 16px;
+            outline: none;
+            transition: box-shadow 0.2s;
+        }
+
+        .contact-form input[type="text"]:focus {
+            box-shadow: 0 0 0 3px rgba(165,214,167,0.5);
+        }
+
+        .contact-form button {
+            background: white;
+            color: var(--green-dark);
+            border: none;
+            padding: 14px 32px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 0.95rem;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            letter-spacing: 0.3px;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .contact-form button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .contact-info { min-width: 280px; display: flex; flex-direction: column; gap: 16px; }
+
+        .contact-pill {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(6px);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 22px;
+            border-radius: 50px;
+            color: white;
+            font-size: 0.9rem;
+        }
+
+        .contact-pill i { font-size: 1rem; opacity: 0.85; }
+        .contact-pill .label { font-size: 0.78rem; opacity: 0.75; }
+        .contact-pill .value { font-weight: 500; margin-top: 1px; }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--green-dark);
+            color: white;
+            padding: 44px 24px 32px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 32px;
+        }
+
+        .footer-brand {
+            font-family: 'Poppins', serif;
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .footer-tagline { font-size: 0.88rem; opacity: 0.75; }
+
+        .social-icons { display: flex; gap: 18px; }
+
+        .social-icons a {
+            color: white;
+            font-size: 1.3rem;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.12);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: background 0.2s, transform 0.2s;
+        }
+
+        .social-icons a:hover { background: rgba(255,255,255,0.25); transform: translateY(-2px); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 992px) {
+            .hero { flex-direction: column; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .bottom-section { grid-template-columns: 1fr; }
+            .contact-container { flex-direction: column; gap: 36px; }
+        }
+
+        @media (max-width: 600px) {
+            .nav-links { gap: 16px; }
+            .hero-content h1 { font-size: 2rem; }
+            .events-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <div class="nav-bar">
+            <span class="logo"><a href="index.html">🌱 GreenCampus</a></span>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="tips.html">Tips</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="aboutus.html">About Us</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="page-content">
+
+        <!-- HERO -->
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Upcoming Events</h1>
+                <p>Join us at GreenCampus events — from community clean-ups to sustainability workshops. There's always something happening to help make our campus greener, one step at a time.</p>
             </div>
-
+            <div class="hero-image">
+                <img src="https://cdn.patchplants.com/uploads/16_9_Hero_min_c473107c93.jpg" alt="Students gardening on campus">
             </div>
-        </nav>
-
-        <div class="main-content">
-             <h1>Campus Events</h1>
-             <p>Discover our sustainable campus initiatives</p>
         </div>
 
-    </body>
+        <!-- EVENTS GRID -->
+        <div class="section-label">All Events</div>
+        <div class="events-grid">
+
+            <div class="event-card">
+                <div class="event-card-img">
+                    <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Community Garden Day">
+                </div>
+                <div class="event-info">
+                    <div class="event-date">12 / 03 / 2026</div>
+                    <div class="event-title">Community Garden Day</div>
+                    <div class="event-location"><i class="fas fa-map-marker-alt"></i> Campus Garden</div>
+                    <div class="event-description">Join us for a day of planting, growing, and learning about sustainable gardening practices right here on campus. All skill levels welcome.</div>
+                    <div class="event-footer">
+                        <span class="event-tag">Local Community</span>
+                        <button class="register-btn">Register</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-card-img">
+                    <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Composting Workshop">
+                </div>
+                <div class="event-info">
+                    <div class="event-date">19 / 03 / 2026</div>
+                    <div class="event-title">Composting Workshop</div>
+                    <div class="event-location"><i class="fas fa-map-marker-alt"></i> Science Block</div>
+                    <div class="event-description">Learn the basics of composting and how to turn food scraps into rich soil. An expert-led, hands-on workshop to reduce your waste footprint.</div>
+                    <div class="event-footer">
+                        <span class="event-tag">Workshops</span>
+                        <button class="register-btn">Register</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-card-img">
+                    <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Campus Clean-Up">
+                </div>
+                <div class="event-info">
+                    <div class="event-date">26 / 03 / 2026</div>
+                    <div class="event-title">Campus Clean-Up</div>
+                    <div class="event-location"><i class="fas fa-map-marker-alt"></i> Main Quad</div>
+                    <div class="event-description">Roll up your sleeves and help us keep campus beautiful. Gloves and bags provided — just show up and make a difference in one morning.</div>
+                    <div class="event-footer">
+                        <span class="event-tag">Activities</span>
+                        <button class="register-btn">Register</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-card-img">
+                    <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Eco Talk Series">
+                </div>
+                <div class="event-info">
+                    <div class="event-date">02 / 04 / 2026</div>
+                    <div class="event-title">Eco Talk Series</div>
+                    <div class="event-location"><i class="fas fa-map-marker-alt"></i> Lecture Hall B</div>
+                    <div class="event-description">Monthly talk exploring climate solutions, featuring guest speakers from the sustainability sector. Open to all students and staff.</div>
+                    <div class="event-footer">
+                        <span class="event-tag">Workshops</span>
+                        <button class="register-btn">Register</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-card-img">
+                    <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Swap Shop">
+                </div>
+                <div class="event-info">
+                    <div class="event-date">09 / 04 / 2026</div>
+                    <div class="event-title">Swap Shop</div>
+                    <div class="event-location"><i class="fas fa-map-marker-alt"></i> Student Union</div>
+                    <div class="event-description">Bring items you no longer need and swap them for something new-to-you. Reduce waste, refresh your space, and connect with your community.</div>
+                    <div class="event-footer">
+                        <span class="event-tag">Activities</span>
+                        <button class="register-btn">Register</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="event-card">
+                <div class="event-card-img">
+                    <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Tree Planting Day">
+                </div>
+                <div class="event-info">
+                    <div class="event-date">16 / 04 / 2026</div>
+                    <div class="event-title">Tree Planting Day</div>
+                    <div class="event-location"><i class="fas fa-map-marker-alt"></i> South Campus</div>
+                    <div class="event-description">Help us plant 50 new trees across campus. A great opportunity to make a lasting green impact and enjoy the outdoors with fellow students.</div>
+                    <div class="event-footer">
+                        <span class="event-tag">Local Community</span>
+                        <button class="register-btn">Register</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- BOTTOM SECTION -->
+        <div class="bottom-section">
+            <div class="left-column">
+
+                <div class="category-box">
+                    <div class="category-title">
+                        <i class="fas fa-list"></i> All Categories
+                    </div>
+                    <div class="tags">
+                        <span class="tag active">All</span>
+                        <span class="tag">Local Community</span>
+                        <span class="tag">Workshops</span>
+                        <span class="tag">Activities</span>
+                    </div>
+                </div>
+
+                <div class="featured-event">
+                    <img src="https://assets.bwbx.io/images/users/iqjWHBFdfxIU/i9oy2aik7gHM/v2/-1x-1.webp" alt="Featured Event">
+                    <div class="featured-event-body">
+                        <div class="featured-badge">Featured Event</div>
+                        <h3>Community Garden Day</h3>
+                        <p>Join us for a day of planting, growing, and learning about sustainable gardening practices right here on campus.</p>
+                        <div class="featured-date"><i class="fas fa-calendar-alt"></i> 12 / 03 / 2026</div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- INTERACTIVE CALENDAR -->
+            <div class="calendar-box">
+                <div class="calendar-header">
+                    <button class="cal-nav" id="prevBtn" aria-label="Previous month">&#8249;</button>
+                    <span class="cal-month-year" id="calTitle"></span>
+                    <button class="cal-nav" id="nextBtn" aria-label="Next month">&#8250;</button>
+                </div>
+                <table class="cal-table">
+                    <thead>
+                        <tr>
+                            <th>Su</th><th>Mo</th><th>Tu</th>
+                            <th>We</th><th>Th</th><th>Fr</th><th>Sa</th>
+                        </tr>
+                    </thead>
+                    <tbody id="calBody"></tbody>
+                </table>
+                <div class="event-popup" id="eventPopup">
+                    <span class="popup-icon"><i class="fas fa-calendar-alt"></i></span>
+                    <span id="popupText">Select a date to see events</span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- ILLUSTRATION -->
+        <div class="illustration">
+            <img src="https://www.hootons.co.uk/wp-content/uploads/2023/08/1525442422272.png" alt="Green campus illustration">
+        </div>
+
+        <!-- CONTACT -->
+        <div class="contact-section">
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h2>Contact Us</h2>
+                    <input type="text" placeholder="Your message...">
+                    <button type="button">Send Message</button>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-pill">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <div class="label">Email us at</div>
+                            <div class="value">greencampus@gmail.com</div>
+                        </div>
+                    </div>
+                    <div class="contact-pill">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <div class="label">Call us on</div>
+                            <div class="value">010 101 010</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- FOOTER -->
+        <footer>
+            <div class="footer-content">
+                <div>
+                    <div class="footer-brand">🌱 GreenCampus</div>
+                    <div class="footer-tagline">Making our campus greener, one event at a time.</div>
+                </div>
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </footer>
+
+    </div><!-- /page-content -->
+
+    <script>
+        /* ── CALENDAR DATA ── */
+        const EVENTS = {
+            '2026-3-12':  { title: 'Community Garden Day',  location: 'Campus Garden' },
+            '2026-3-19':  { title: 'Composting Workshop',   location: 'Science Block' },
+            '2026-3-26':  { title: 'Campus Clean-Up',       location: 'Main Quad' },
+            '2026-4-2':   { title: 'Eco Talk Series',       location: 'Lecture Hall B' },
+            '2026-4-9':   { title: 'Swap Shop',             location: 'Student Union' },
+            '2026-4-16':  { title: 'Tree Planting Day',     location: 'South Campus' },
+        };
+
+        const MONTHS = [
+            'January','February','March','April','May','June',
+            'July','August','September','October','November','December'
+        ];
+
+        const today = new Date();
+        const todayKey = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+
+        let view = { year: 2026, month: 2 }; // 0-indexed month (2 = March)
+        let selectedKey = null;
+
+        /* ── BUILD CALENDAR ── */
+        function buildCalendar() {
+            const { year, month } = view;
+            document.getElementById('calTitle').textContent = `${MONTHS[month]} ${year}`;
+
+            const body = document.getElementById('calBody');
+            body.innerHTML = '';
+
+            const firstDay = new Date(year, month, 1).getDay();
+            const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+            let date = 1;
+
+            for (let row = 0; row < 6; row++) {
+                const tr = document.createElement('tr');
+                let rowHasContent = false;
+
+                for (let col = 0; col < 7; col++) {
+                    const td = document.createElement('td');
+
+                    if (row === 0 && col < firstDay || date > daysInMonth) {
+                        tr.appendChild(td);
+                        continue;
+                    }
+
+                    rowHasContent = true;
+                    const key = `${year}-${month + 1}-${date}`;
+                    const div = document.createElement('div');
+                    div.className = 'cal-day';
+                    div.textContent = date;
+                    div.dataset.key = key;
+
+                    if (key === todayKey)    div.classList.add('today');
+                    if (key === selectedKey) div.classList.add('selected');
+                    if (EVENTS[key])         div.classList.add('has-event');
+
+                    div.addEventListener('click', () => onDayClick(key, div));
+                    td.appendChild(div);
+                    tr.appendChild(td);
+                    date++;
+                }
+
+                if (rowHasContent || row === 0) body.appendChild(tr);
+                if (date > daysInMonth) break;
+            }
+        }
+
+        /* ── DAY CLICK ── */
+        function onDayClick(key, el) {
+            document.querySelectorAll('.cal-day.selected').forEach(d => d.classList.remove('selected'));
+            el.classList.add('selected');
+            selectedKey = key;
+
+            const popup   = document.getElementById('eventPopup');
+            const icon    = popup.querySelector('.popup-icon');
+            const text    = document.getElementById('popupText');
+            const ev      = EVENTS[key];
+            const [y, m, d] = key.split('-');
+
+            if (ev) {
+                popup.classList.remove('no-event');
+                icon.innerHTML = '<i class="fas fa-leaf"></i>';
+                text.innerHTML = `<strong>${ev.title}</strong> &mdash; <span style="opacity:0.8">${ev.location}</span>`;
+            } else {
+                popup.classList.add('no-event');
+                icon.innerHTML = '<i class="fas fa-calendar-times"></i>';
+                text.textContent = `No events on ${d} ${MONTHS[parseInt(m) - 1]}`;
+            }
+        }
+
+        /* ── NAV BUTTONS ── */
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            view.month--;
+            if (view.month < 0) { view.month = 11; view.year--; }
+            buildCalendar();
+        });
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            view.month++;
+            if (view.month > 11) { view.month = 0; view.year++; }
+            buildCalendar();
+        });
+
+        /* ── CATEGORY TAGS ── */
+        document.querySelectorAll('.tag').forEach(tag => {
+            tag.addEventListener('click', () => {
+                document.querySelectorAll('.tag').forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+            });
+        });
+
+        /* ── INIT ── */
+        buildCalendar();
+    </script>
+
+</body>
 </html>
