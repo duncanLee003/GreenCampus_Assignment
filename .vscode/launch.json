@@ -9,6 +9,10 @@
             "request": "launch",
             "name": "Open events.html",
             "file": "c:\\Users\\30276781\\OneDrive - Burton & South Derbyshire College\\GreenCampus_Assignment\\events.html"
+            "type": "chrome",
+            "request": "launch",
+            "name": "Open index.html",
+            "file": "d:\\WEBSITE\\GreenCampus_Assignment\\index.html"
         }
     ]
 }

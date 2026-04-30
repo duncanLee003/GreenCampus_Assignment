@@ -1,43 +1,325 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>GreenCampus - Resources</title>
         <meta http-equiv="X-UA-Compatible" content ="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="swiper-bundle.min.css">
         <link rel="stylesheet" href="style.css">
-        <link href='https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined' rel="stylesheet">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
     </head>
     <body>
         <nav>
             <div class ="nav-bar">
-                <span class="logo"><a href="#">GreenCampus</a></span>
+                <i class='bx bx-menu sidebarOpen'></i>
+                <span class="logo navLogo"><a href="#">GreenCampus</a></span>
 
                 <div class ="menu">
+                    <div class="logo-toggle">
+                        <span class ="logo" ><a href="#">GreenCampus</a></span>
+                        <i class='bx bx-x siderbarClose'></i>
+                    </div>
+                        
                     <ul class="nav-links">
                         <li><a href = "index.html" >Home</a></li>
                         <li><a href = "events.html" >Events</a></li>
                         <li><a href = "tips.html" >Tips</a></li>
-                        <li><a href = "resources.html" >Resources</a></li>
+                        <li><a href = "resources.html" class="active-page">Resources</a></li>
                         <li><a href = "aboutus.html" >About Us</a></li>
-
                     </ul> 
+                    
                 </div>
+                    
+                <div class="darkLight-searchBox">
+                    <div class = "dark-light">
+                        <i class='bx bx-moon moon'></i>
+                        <i class='bx bx-sun sun'></i>
+                    </div>
 
+                       <div class = "searchBox">
+                           <div class="searchToggle">
+                               <i class='bx bx-x cancel'></i>
+                               <i class='bx bx-search search'></i>
+                           </div>
+                               <div class="search-field">
+                                   <input type= "text" placeholder = "Search...">
+                                   <i class='bx bx-search'></i>
+                               </div>
+                            
+                        </div>
+                    </div>
 
                 </span>
-            </div>
 
             </div>
         </nav>
 
-        <!-- spacing so content isn't hidden behind nav bar-->
-        <style>
-            body {padding-top: 70px;}
-        </style>
+        <div class="page-container">
+            <div class="game-ui">
+                <h1>Sustainability Goal Tracker</h1>
+                <div class="streak-box">
+                    <p>Streak: <span id="streakCount">0</span> days</p>
+                </div>
+                
+                <h2>Level <span id="level">1</span></h2>
+                
 
-        <!-- write code here!-->
-         <h1> Jezza's page</h1>
+                <div class="progress-container">
+                    <div class="progress-segments"></div>
+                    <div class="progress-bar" id="xpBar"></div>
+                    
+                </div>
 
+
+                <div class="xpMessage-box">
+                    <p id="xpMessage"></p>
+                </div>
+
+                
+
+                <div class="xp-box">
+                    <p><span id="xp">0</span> / <span id="xpNeeded">100</span> XP</p>
+                </div>
+                
+
+                
+                <!-- 
+                <button onclick="gainXP(20)">test</button>
+                -->
+                
+
+                <div id="reward"></div>
+
+                <div class = "rowboardsection">
+                    <div class="leaderboardcol">
+                        <h3>Leaderboard</h3>
+
+                        <table id="leaderboardTable">
+                        <thead>
+                            <tr>
+                            <th>#</th>
+                            <th>Player</th>
+                            <th>XP</th>
+                            <th>Reward</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                        </table>
+
+                        
+                        <div class = rowleader>
+                            <input type="text" id="username" placeholder="Your name"> 
+                            <div class="submissionbox">
+                                <button onclick="submitScore()">Submit Score</button>
+
+                            </div>
+                            
+                            <div class="selectionbox">
+                                <select id="titleSelector" onchange="changeTitle()"></select>
+
+                            </div>
+                        </div>
+                        
+
+                        
+                    </div>
+                    <div class = "galleryheading">
+                        <h3>Photos taken by challengers</h3>
+                    
+                    
+                        <div class = "galleryothers">
+                            
+                            <img src="img/gallery1.png" alt="" class="card-img">
+                            <img src="img/gallery2.png" alt="" class="card-img">
+                            <img src="img/gallery3.png" alt="" class="card-img">
+                            <img src="img/gallery4.png" alt="" class="card-img">
+                            <img src="img/gallery5.png" alt="" class="card-img">
+                            <img src="img/gallery6.png" alt="" class="card-img">
+                            <img src="img/gallery3.png" alt="" class="card-img">
+                            <img src="img/gallery2.png" alt="" class="card-img">
+                            <img src="img/gallery5.png" alt="" class="card-img">
+                            <img src="img/gallery4.png" alt="" class="card-img">
+                            <img src="img/gallery1.png" alt="" class="card-img">
+                            <img src="img/gallery6.png" alt="" class="card-img">
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="challenge-grid" id="challengeGrid"></div>
+                
+                <div class="chalbuttonsrow">
+                    <div class ="addchallengebutton">
+                        <button onclick="addChallenge()">+ Add Challenge</button>
+                    </div>
+                
+                    <div class = "filterbutton">
+                        <select id="challengeFilter" onchange="renderChallenges()">
+                            <option value="all" selected>All</option>
+                            <option value="daily">Daily</option>
+                            <option value="weekly">Weekly</option>
+                        </select>
+                    </div>
+                
+                    <div class = "progressbuttons">
+                        <button onclick="showTab('active')">In Progress</button>
+                        <button onclick="showTab('completed')">Completed</button>
+                    </div>
+                </div>
+                
+                
+                <h3 id="activeTitle">In Progress</h3>
+                <div class="challenge-grid" id="activeChallenges"></div>
+
+                <h3 id="completedTitle">Completed</h3>
+                <div class="challenge-grid" id="completedChallenges"></div>
+
+
+                <div class="full-width-section"> </div>
+                
+
+
+                <div id="popupModal" class="modal">
+                    <div class="modal-content">
+                        <h3 id="modalTitle">Add Challenge</h3>
+
+                        <input id="challengeName" placeholder="Challenge name">
+                        <input id="challengeType" placeholder="Type (Daily/Weekly)">
+                        <input id="challengeDesc" placeholder="Description">
+                        <input id="challengeDays" type="number" placeholder="Days left">
+
+                        <div class="modal-buttons">
+                            <button onclick="confirmChallenge()">Save</button>
+                            <button onclick="closeModal()">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            
+
+        </div>
+
+
+        <div class = "quizsection">
+            
+            <h3>Test your knowledge!</h3>
+
+            <div class = "quizmain">
+
+            
+                <div id="quizBox" class="quiz-box">
+                    <h4 id="questionText">Question here</h4>
+                    <p><br></p>
+                    <div id="answerButtons"></div>
+
+                    <p id="quizFeedback"></p>
+
+                </div>
+            </div>
+
+            <div class = "wavebrown">
+                <img src="img/wave-haikei.svg" alt="">
+            </div>
+
+            
+        </div>
+        
+        
+    
+        
+        
+        <div class ="contactcontainer">
+            
+    
+            
+            
+            <div class="contact-box">
+                <div class="contact-left">
+                    <h3>Send your request</h3>
+                    <form>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Name</label>
+                                <input type="text" placeholder="Your Name">
+                            </div>
+                            <div class="input-group">
+                                <label>Phone</label>
+                                <input type="text" placeholder="+44 123 456 7890">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Email</label>
+                                <input type = "email" placeholder="email@example.com">
+                            </div>
+                            <div class="input-group">
+                                <label>Subject</label>
+                                <input type="text" placeholder="Enquiries ">
+                            </div>
+                        </div>
+
+                        <label>Message</label>
+                        <textarea rows="5" placeholder = "Your message here..."></textarea>
+
+                        <div class = "contactsend">
+                            <button type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class ="contact-right">
+                    <div class="details">
+                        <h3>Reach Us</h3>
+
+                        <table>
+                            <tr>
+                                <td>Email</td>
+                                <td>contactus@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>+44 0987 654321</td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td>Lichfield Street <br> Burton-On-Trent <br> Staffordshire <br> UK <br> DE14 3RL </td> 
+                            </tr>
+                        </table>
+                        <div class = "contactmap">
+                            <h3>Find Us</h3>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2412.2326543641484!2d-1.6304478000000002!3d52.8001437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a024776346265%3A0x1e14e88c557a62a1!2sBurton%20and%20South%20Derbyshire%20College!5e0!3m2!1sen!2suk!4v1776350592949!5m2!1sen!2suk" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+               
+                
+                
+            </div>
+            <div class ="footer1">
+                <div class="footerleft">
+                    <p>Policies</p>
+                    <p>&copy; 2026 GreenCampus. All rights reserved.</p>
+                </div>
+
+
+                <div class = "footerright">
+                    <i class='bx bxl-linkedin-square'></i>
+                    <i class='bx bxl-youtube' ></i>
+                    <i class='bx bxl-facebook-square' ></i>
+                    <i class='bx bxl-twitter' ></i>
+                </div>
+            </div>
+            
+            
+        </div>
     </body>
+    <script src = "script.js"></script>
+
+
 </html>
