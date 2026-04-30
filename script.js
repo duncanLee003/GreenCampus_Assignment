@@ -1,3 +1,4 @@
+//navigation dark and light mode
 const body = document.querySelector("body"),
       nav = document.querySelector("nav"),
       modeToggle = document.querySelector(".dark-light"),
@@ -18,8 +19,11 @@ const body = document.querySelector("body"),
 
         if(!body.classList.contains("dark")){
             localStorage.setItem("mode" , "light-mode");
+            
+            
         }else{
             localStorage.setItem("mode" , "dark-mode");
+            document.querySelector("img/wave-haikei.svg").classList.add("hidden");
         }
       });
 
@@ -29,7 +33,7 @@ const body = document.querySelector("body"),
       });
  
       
-
+//sidebar menu
 sidebarOpen.addEventListener("click" , () =>{
     nav.classList.add("active");
 });
@@ -102,9 +106,9 @@ function updateUI() {
 function createSegments() {
   const container = document.querySelector(".progress-segments");
 
-  if (!container) return; // 🔥 prevent crash
+  if (!container) return; //it crashes if i dont have this
 
-  for (let i = 0; i < 4; i++) { //maybe modify to get rid of segment at the end of bar
+  for (let i = 0; i < 4; i++) { 
     const seg = document.createElement("div");
     container.appendChild(seg);
   }
@@ -134,7 +138,7 @@ function showReward(level) {
 
   if (newTitle && !unlockedTitles.includes(newTitle)) {
     unlockedTitles.push(newTitle);
-    selectedTitle = newTitle; // auto-equip newest
+    selectedTitle = newTitle; //sets the newest title
 
     document.getElementById("reward").innerText =
       `Unlocked Title: ${newTitle}`;
@@ -176,17 +180,17 @@ function loadProgress() {
 function updateStreak() {
   const today = new Date().toDateString();
 
-  // first time ever
+  //first day
   if (!lastActiveDate) {
     streak = 1;
   }
 
-  // same day → do nothing
+  //does nothing if same day
   else if (lastActiveDate === today) {
     return;
   }
 
-  // consecutive day → increase streak
+  //next day increases streak
   else {
     const yesterday = new Date();
     yesterday.setDate(yesterday.getDate() - 1);
@@ -203,29 +207,25 @@ function updateStreak() {
   saveProgress();
 }
 
-// =========================
-// LEADERBOARD SYSTEM
-// =========================
 
 
-
-
+//leaderboard code
 let leaderboard = JSON.parse(localStorage.getItem("leaderboard")) || [];
 
-// Submit score to leaderboard
+
 function submitScore() {
   const name = document.getElementById("username").value.trim() || "Anonymous";
   const totalXP = xp + (level * 100);
 
-  // Find existing player
+  //finds existing player
   const existingIndex = leaderboard.findIndex(player => player.name === name);
 
   if (existingIndex !== -1) {
-    // Player exists → update their score & title
+    //if player exists then update details
     leaderboard[existingIndex].xp = totalXP;
     leaderboard[existingIndex].title = selectedTitle;
   } else {
-    // New player → add them
+    //add player
     leaderboard.push({
       name: name,
       xp: totalXP,
@@ -233,20 +233,19 @@ function submitScore() {
     });
   }
 
-  // Sort leaderboard (highest XP first)
+  //sort leaderboard (high exp first)
   leaderboard.sort((a, b) => b.xp - a.xp);
 
-  // Keep top 10
+  //top 10
   leaderboard = leaderboard.slice(0, 10);
 
-  // Save + render
+  //save and render
   localStorage.setItem("leaderboard", JSON.stringify(leaderboard));
   renderLeaderboard();
 }
 
-// =========================
-// REWARD + LEVEL LOGIC
-// =========================
+
+//reward logic
 function getLevelFromXP(totalXP) {
   return Math.floor(totalXP / 100);
 }
@@ -259,9 +258,7 @@ function getReward(level) {
 }
 
 
-// =========================
-// RENDER LEADERBOARD TABLE
-// =========================
+
 function renderLeaderboard() {
   const tableBody = document.querySelector("#leaderboardTable tbody");
   tableBody.innerHTML = "";
@@ -433,7 +430,7 @@ function renderChallenges() {
 
 
 
-  // 🚨 stop crash if HTML not loaded
+  //stops stupid crash
   if (!activeGrid || !completedGrid) {
     console.error("Missing challenge containers in HTML");
     return;
@@ -517,7 +514,7 @@ function confirmChallenge() {
     daysLeft,
     xpReward: 20,
     completed: false,
-    image: "img/carddefault.png"
+    image: "img/carddefault.png" 
   });
 
   closeModal();
@@ -614,14 +611,54 @@ const quiz = [
     correct: 0
   },
   {
-    question: "Which is a daily challenge example?",
-    answers: ["Run 5km", "Build a house", "Fly a plane", "Sleep forever"],
+    question: "Which of these is a renewable energy source?",
+    answers: ["Coal", "Natural gas", "Solar power", "Oil"],
+    correct: 2
+  },
+  {
+    question: "Which everyday action saves the most water?",
+    answers: ["Shorter showers", "Leaving taps on", "Using more shampoo", "Washing clothes daily"],
     correct: 0
   },
   {
-    question: "What does XP stand for in your system?",
-    answers: ["Experience Points", "Extra Pizza", "Exercise Power", "Example Process"],
+    question: "What is a sustainable transport option?",
+    answers: ["Driving alone", "Cycling", "Taking taxis", "Using a plane"],
+    correct: 1
+  },
+  {
+    question: "Why should you turn off lights when not in use?",
+    answers: ["To save energy", "To make rooms darker", "To reduce noise", "No reason"],
     correct: 0
+  },
+  {
+    question: "What does ‘carbon footprint’ mean?",
+    answers: [
+      "The weight of your shoes",
+      "The amount of carbon emissions you produce",
+      "Your walking distance",
+      "A type of recycling method"
+    ],
+    correct: 1
+  },
+  {
+    question: "Which habit reduces single-use plastic?",
+    answers: [
+      "Using reusable bottles",
+      "Buying more packaging",
+      "Throwing items away quickly",
+      "Using plastic bags daily"
+    ],
+    correct: 0
+  },
+  {
+    question: "What is a benefit of planting trees?",
+    answers: [
+      "Increases pollution",
+      "Absorbs carbon dioxide",
+      "Uses more energy",
+      "Reduces oxygen"
+    ],
+    correct: 1
   }
 ];
 
@@ -639,8 +676,8 @@ let currentQuestion = 0;
 function loadQuestion() {
 
   if (isQuizLocked()) {
-    document.getElementById("questionText").innerText =
-      "✅ You’ve completed today’s quiz! Come back tomorrow.";
+    document.getElementById("questionText").innerHTML =
+      "<i class='bx bx-check-circle'></i> You’ve completed today’s quiz! Come back tomorrow.";
 
     document.getElementById("answerButtons").innerHTML = "";
     return;
@@ -656,7 +693,11 @@ function loadQuestion() {
   q.answers.forEach((answer, index) => {
     const btn = document.createElement("button");
     btn.innerText = answer;
-    btn.onclick = () => checkAnswer(index);
+    btn.onclick = (e) => {
+      e.preventDefault();
+      e.target.blur(); //stops the auto scroll when answering first question
+      checkAnswer(index);
+    };
     container.appendChild(btn);
   });
 
@@ -667,12 +708,12 @@ function checkAnswer(selected) {
   const q = quiz[currentQuestion];
 
   if (selected === q.correct) {
-    document.getElementById("quizFeedback").innerText = "✅ Correct! +10 XP";
-    gainXP(10);
+    document.getElementById("quizFeedback").innerHTML = "<i class='bx bx-check-circle'></i> Correct! +50 XP";
+    gainXP(50);
 
     correctAnswers++;
   } else {
-    document.getElementById("quizFeedback").innerText = "❌ Wrong answer";
+    document.getElementById("quizFeedback").innerHTML = "<i class='bx bx-x-circle'></i> Wrong answer";
   }
 
   setTimeout(() => {
@@ -688,31 +729,44 @@ function nextQuestion() {
     const score = correctAnswers;
     const total = quiz.length;
 
-    let message = `🎉 Quiz complete!\n\nYou scored ${score}/${total}\n`;
+    const questionEl = document.getElementById("questionText");
 
-    // 🎯 PERFECT SCORE CHECK
+    let message = `
+      <i class='bx bx-trophy'></i> Quiz complete!<br><br>
+      You scored ${score}/${total}<br>
+    `;
+
+    //checks for perfect
     if (score === total) {
-      message += "🔥 Perfect score!\n";
+      message += `
+        <i class='bx bx-star perfect'></i> Perfect score!<br>
+      `;
       
       const unlocked = unlockQuizTitle(); 
+
       if (unlocked) {
-        message += "🏆 You unlocked: 🧠 Quiz Master!";
+        message += `
+          <i class='bx bx-award reward'></i> You unlocked: 🧠 Quiz Wizard!
+        `;
       } else {
-        message += "🧠 You already have the Quiz Master title!";
+        message += `
+          <i class='bx bx-info-circle'></i> You already have the Quiz Wizard title!
+        `;
       }
     }
 
-    // save completion date
+    //save completion date
     const today = new Date().toDateString();
     localStorage.setItem("quizCompletedDate", today);
     quizCompletedDate = today;
 
-    // show result
-    document.getElementById("questionText").innerText = message;
+
+    questionEl.innerHTML = message;
+
     document.getElementById("answerButtons").innerHTML = "";
     document.getElementById("quizFeedback").innerText = "";
 
-    // reset for next time
+    //reset for next time
     correctAnswers = 0;
 
     return;
@@ -722,7 +776,7 @@ function nextQuestion() {
 }
 
 function unlockQuizTitle() {
-  const newTitle = "🧠 Quiz Master";
+  const newTitle = "🧠 Quiz Wizard";
 
   if (!unlockedTitles.includes(newTitle)) {
     unlockedTitles.push(newTitle);
@@ -734,10 +788,10 @@ function unlockQuizTitle() {
     updateTitleSelector();
     saveProgress();
 
-    return true; // ✅ NEW unlock
+    return true; //if new it unlocks
   }
 
-  return false; // ❌ already owned
+  return false;
 }
 
 

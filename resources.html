@@ -179,8 +179,8 @@
 
 
                 <div class="full-width-section"> </div>
+                
 
-            
 
                 <div id="popupModal" class="modal">
                     <div class="modal-content">
@@ -191,42 +191,47 @@
                         <input id="challengeDesc" placeholder="Description">
                         <input id="challengeDays" type="number" placeholder="Days left">
 
-                        <div class="modal-buttons"></div>
-                        <button onclick="confirmChallenge()">Save</button>
-                        <button onclick="closeModal()">Cancel</button>
-                        
+                        <div class="modal-buttons">
+                            <button onclick="confirmChallenge()">Save</button>
+                            <button onclick="closeModal()">Cancel</button>
+                        </div>
                     </div>
                 </div>
             </div>
+            
+            
 
         </div>
 
 
         <div class = "quizsection">
-            <h3>Quick Quiz</h3>
-
-            <div id="quizBox" class="quiz-box">
-                <h4 id="questionText">Question here</h4>
-
-                <div id="answerButtons"></div>
-
-                <p id="quizFeedback"></p>
-
-            </div>
             
+            <h3>Test your knowledge!</h3>
+
+            <div class = "quizmain">
+
+            
+                <div id="quizBox" class="quiz-box">
+                    <h4 id="questionText">Question here</h4>
+                    <p><br></p>
+                    <div id="answerButtons"></div>
+
+                    <p id="quizFeedback"></p>
+
+                </div>
+            </div>
+
+            <div class = "wavebrown">
+                <img src="img/wave-haikei.svg" alt="">
+            </div>
+
             
         </div>
         
-        <!--          
-        <div class="wave">
-            <svg viewBox="0 0 1440 320">
-            <path fill="#6b7f62" fill-opacity="1"
-                d="M0,192L60,181.3C120,171,240,149,360,144C480,139,600,149,720,165.3C840,181,960,203,1080,192C1200,181,1320,139,1380,117.3L1440,96V320H0Z">
-            </path>
-            </svg>
-        </div>
-        -->
-
+        
+    
+        
+        
         <div class ="contactcontainer">
             
     
@@ -296,10 +301,22 @@
                 
                 
             </div>
-        </div>
- 
-        <div class ="footer">
-            <p>&copy; 2026 GreenCampus. All rights reserved.</p>
+            <div class ="footer1">
+                <div class="footerleft">
+                    <p>Policies</p>
+                    <p>&copy; 2026 GreenCampus. All rights reserved.</p>
+                </div>
+
+
+                <div class = "footerright">
+                    <i class='bx bxl-linkedin-square'></i>
+                    <i class='bx bxl-youtube' ></i>
+                    <i class='bx bxl-facebook-square' ></i>
+                    <i class='bx bxl-twitter' ></i>
+                </div>
+            </div>
+            
+            
         </div>
     </body>
     <script src = "script.js"></script>

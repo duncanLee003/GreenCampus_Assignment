@@ -42,7 +42,8 @@ a.active-page {
     --namecolour: #7a5e62;
     --darkgreen: #314537;
     --reviewcard: #ece4d5;
-    --quizback: #343a31;
+    --quizback: #586552;
+    --reviewId: #393838;
     
 
 }
@@ -59,15 +60,16 @@ body.dark{
     --side-nav: #242526;
     --text-color: #CCC; 
     --search-bar:#242526;
-    --bannerbg: #272727;
+    --bannerbg: #2e322f;
     --reviewsbg: #2e2e2e;
     --contactbg: #272727;
     --secleader:#5b6159;
     --leadertitle: rgb(130, 144, 132);
     --namecolour: #242526;
     --darkgreen: #687c5f;
-    --reviewcard: #6e6e6e;
+    --reviewcard: #4c4c4c;
     --quizback:#2d2d2d;
+    --reviewId:#d3d3d3;
 
 }
 
@@ -501,22 +503,25 @@ section{
 }
 
 .recycleIcon{
-    min-height: 50px;
+    max-height: 200px;
     border: 2px solid transparent;
+    font-size: 180px;
 }
 
 .bulbIcon{
-    min-height: 50px;
+    max-height: 200px;
     border: 2px solid transparent;
+    font-size: 180px;
 }
 
 .treeIcon{
-    min-height: 50px;
+    max-height: 200px;
     border: 2px solid transparent;
+    font-size: 180px;
 }
 
 .recycleInfo{
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     flex-direction: row;
     justify-content: space-evenly;
@@ -528,7 +533,7 @@ section{
 }
 
 .bulbInfo{
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     flex-direction: row;
     justify-content: space-evenly;
@@ -537,7 +542,7 @@ section{
 }
 
 .treeInfo{
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     flex-direction: row;
     justify-content: space-evenly;
@@ -554,7 +559,6 @@ section{
     margin-top: 6em;
 
 }
-
 
 
 
@@ -687,18 +691,18 @@ section{
 .name{
     font-size: 27px;
     font-weight: 500;
-    color: #393838;
+    color: var(--reviewId);
 }
 
 .type{
     font-size: 20px;
     font-weight: 500;
-    color: #393838;
+    color: var(--reviewId);
 }
 
 .description{
     font-size: 16px;
-    color: #000000;
+    color: var(--reviewId);
     text-align: center;
 }
 
@@ -1249,6 +1253,7 @@ tr td{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+
 }
 
 .challenge-card:hover {
@@ -1325,6 +1330,7 @@ tr td{
 .modal-buttons {
   display: flex;
   justify-content: space-between;
+  
 }
 
 .modal-buttons button {
@@ -1332,14 +1338,29 @@ tr td{
   border: none;
   border-radius: 6px;
   cursor: pointer;
+  background-color: var(--reviewsbg);
+  color: white;
+  
 }
+
+/* quiz css code */
+
+
 
 .quiz-box {
   margin-top: 20px;
   padding: 15px;
-  background: rgb(102, 117, 110);
+  background: var(--quizback);
   border-radius: 10px;
-  max-width: 500px;
+  max-width: 1000px;
+  min-height: 250px;
+
+}
+
+.quiz-box h4{
+    font-size: 40px;
+    color: white;
+    font-weight: 200;
 }
 
 #answerButtons button {
@@ -1348,7 +1369,14 @@ tr td{
   padding: 10px;
   width: 100%;
   cursor: pointer;
-  background-color: #aaaaa0;
+  background-color: var(--body-color);
+  border-radius: 10px;
+  font-size: 20px;
+  color:var(--text-color);
+  border:none;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+
+  
 }
 
 #activeChallenges {
@@ -1363,35 +1391,102 @@ tr td{
     position: relative;
     margin-top: 40px;
     background-color: var(--quizback);
-    height: 200vh;
+    padding: 0 20px;
+    display:flex;
+    flex-direction: column;
+    overflow: hidden;
+  
+
+
+}
+
+.quizmain{
+    position: relative;
+
+    background-color: var(--quizback);
     padding: 0 20px;
     align-items: center;
     display:flex;
     flex-direction: column;
+
+
+
 }
+
+
 
 .quizsection h3{
     font-size: 50px;
     font-weight: 500;
     color: white;
     margin-top: 20px;
+    text-align: left;
+    padding: 30px 80px;
+
 }
 
-/*
-.wave {
-  position: relative;
-  width: 100vw;
-  left: 50%;
-  transform: translateX(-50%);
+#quizFeedback {
+    color:white;
+    font-size:20px;
+
 }
 
-.wave svg {
-  display: block;
+.quizsection,
+.quizmain {
+  min-height: 60vh;
+}
+
+#questionText i {
+  margin-right: 8px;
+  font-size: 24px;
+}
+
+#questionText i.perfect {
+  color: gold;
+  font-size:50px;
+}
+
+#questionText i.reward {
+  color: #4CAF50;
+  font-size: 50px;
+}
+
+#questionText i.bx-trophy {
+  color: #dfdfdf;
+  font-size: 50px;
+}
+
+#answerButtons button:focus {
+  outline: none;
+}
+
+.wavebrown {
+  position: absolute;
+  bottom: 0;      /* 👈 anchor to bottom */
+  left: 0;
   width: 100%;
-  height: 120px;
-}
-*/
+  pointer-events: none;
 
+}
+
+.wavebrown img {
+  width: 100%;
+  height: auto;
+  display: block;
+  
+}
+
+.example {
+    width:100%;
+    background-color: var(--reviewsbg);
+    height: 10vh;
+    display:flex;
+    position: relative;
+
+}
+body.dark .wavebrown {
+  filter: brightness(0) saturate(100%) invert(10%) sepia(0%) saturate(0%) hue-rotate(57deg) brightness(92%) contrast(86%);
+}
 
 @media (max-width: 1370px){
     section,
@@ -1486,7 +1581,7 @@ tr td{
 
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 850px){
     .swiper-navBtn{
         display: none;
     }
@@ -1535,6 +1630,32 @@ tr td{
         align-items: center;
     }
 
+    .quizsection h3{
+        font-size: 50px;
+        font-weight: 500;
+        color: white;
+        margin-top: 20px;
+        text-align:center;
 
+    }
+
+    .quizsection,
+    .quizmain {
+        min-height: 70vh;
+    }
+
+    .recycleInfo,
+    .bulbInfo,
+    .treeInfo {
+        font-size:15px;
+    }
+
+    /* might have to increase? samsung 8 everything looks off, but its fine for the rest so.. */
+    .container2{
+        height: 120vh;
+    }
 
 }
+
+
+/*im tired*/
