@@ -1,43 +1,483 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <meta charset="utf-8">
         <title></title>
         <meta http-equiv="X-UA-Compatible" content ="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="swiper-bundle.min.css">
         <link rel="stylesheet" href="style.css">
-        <link href='https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined' rel="stylesheet">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
     </head>
     <body>
         <nav>
             <div class ="nav-bar">
-                <span class="logo"><a href="#">GreenCampus</a></span>
+                <i class='bx bx-menu sidebarOpen'></i>
+                <span class="logo navLogo"><a href="#">GreenCampus</a></span>
 
                 <div class ="menu">
+                    <div class="logo-toggle">
+                        <span class ="logo" ><a href="#">GreenCampus</a></span>
+                        <i class='bx bx-x siderbarClose'></i>
+                    </div>
+                        
                     <ul class="nav-links">
                         <li><a href = "index.html" >Home</a></li>
                         <li><a href = "events.html" >Events</a></li>
                         <li><a href = "tips.html" >Tips</a></li>
                         <li><a href = "resources.html" >Resources</a></li>
                         <li><a href = "aboutus.html" >About Us</a></li>
-
                     </ul> 
+                    
                 </div>
+                    
+                <div class="darkLight-searchBox">
+                    <div class = "dark-light">
+                        <i class='bx bx-moon moon'></i>
+                        <i class='bx bx-sun sun'></i>
+                    </div>
 
+                       <div class = "searchBox">
+                           <div class="searchToggle">
+                               <i class='bx bx-x cancel'></i>
+                               <i class='bx bx-search search'></i>
+                           </div>
+                               <div class="search-field">
+                                   <input type= "text" placeholder = "Search...">
+                                   <i class='bx bx-search'></i>
+                               </div>
+                            
+                        </div>
+                    </div>
 
                 </span>
-            </div>
 
             </div>
         </nav>
 
+        <script src = "script.js"></script>
+
         <!-- spacing so content isn't hidden behind nav bar-->
         <style>
-            body {padding-top: 70px;}
+            body {padding-top: 100px;}
         </style>
 
         <!-- write code here!-->
-         <h1> Duncan's pagetesssssssssssssst</h1>
+        <div class="container">
+            
+            <section class = "img-info">
+                <div class = "firstbox">
+                    <h1>Our Mission</h1>
+                    <p>Our mission is to promote sustainability and environmental awareness on campus. We aim to create a greener and more eco-friendly environment for students, staff, and the community. Through education, advocacy, and action, we strive to reduce our carbon footprint and make a positive impact on the planet.</p>
+                    <button> <a href = "aboutus.html">Learn more</a> </button>
+                </div>
+                    
+                <div class = "secondbox">
+                    <img src = "img/homecollage.svg" alt = "collage of images">
+                    
+                </div>
+
+                
+            </section>
+
+
+        </div>
+        
+        <div class="container2">
+
+            <section class ="banner-content">
+
+                <div class="firstbannerCol">
+                    <div class ="recycleIcon" >
+                        <i class='bx bx-recycle' style='color:#ffffff'  ></i>
+                    </div>
+                    <div class="recycleInfo">
+                        <p>Make a difference by recycling correctly and reducing everyday waste. Sort your waste into the right bins.</p>
+                    </div>
+                </div>
+
+                <div class="secondbannerCol">
+                    <div class ="bulbIcon" >
+                        <i class='bx bx-bulb' style='color:#ffffff'  ></i>
+                    </div>
+                    <div class="bulbInfo">
+                        <p>Save energy by turning off lights and unplugging devices when not in use to reduce energy consumption.</p>
+                    </div>
+                </div>
+
+                <div class="thirdbannerCol">
+                    <div class ="treeIcon" >
+                        <i class='bx bx-leaf' style='color:#ffffff' ></i>
+                    </div>
+                    <div class="treeInfo">
+                        <p>Support green spaces by planting trees, joining campus clean-up events, and respecting nature.</p>
+                    </div>
+                </div> 
+
+            </section>
+        </div>
+
+        <div class="container3">
+            
+            <section class = "video-content">
+                <div class = "videobox">
+                    <video width ="100%" height = "auto" controls>
+                            <source src="img/placeholdervideo.mp4" type="video/mp4">
+                            <track src ="captions.vtt" label="English captions" default />
+                    </video>
+                </div>
+                    
+                <div class = "videosumbox">
+                    <p>
+                        <br><br><br> <br> GreenCampus is a college-wide initiative designed to help students, staff, and the local community live more sustainably. We provide simple, practical advice and engaging tools to help you reduce your environmental impact—without making life complicated. <br> <br>
+                        Discover upcoming sustainability events, workshops, and community initiatives. From campus activities to local projects, there are plenty of ways to take part and make a difference. <br> <br> Every action you take contributes to a greener campus and a better future.
+                    </p>
+                    
+                </div>
+                
+                
+            </section>
+            
+            
+        </div>
+
+
+
+        <div class = "container4">
+            <div class ="slide-container swiper">
+                <div class = "slide-content">
+                    <div class="card-wrapper swiper-wrapper">
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+
+                                <div class = "topcard">
+                                    <div class="card-image">
+                                        <img src="img/defaultavatar.jpg" alt="" class="card-img">
+                                        
+                                    </div>
+                                    <div class = "persontext">
+                                        <h2 class="name">John Doe</h2>
+                                        <h2 class="type">Student</h2>
+                                    </div>
+                                    
+                                </div>    
+
+                                <div class="card-content">
+                                    <p class = "description">"I never really thought about my daily habits before using GreenCampus. The challenges actually make it fun to try things like reducing plastic or saving energy."<br><br><br></p>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+
+                                <div class = "topcard">
+                                    <div class="card-image">
+                                        <img src="img/defaultavatar.jpg" alt="" class="card-img">
+                                        
+                                    </div>
+                                    <div class = "persontext">
+                                        <h2 class="name">Jane Doe</h2>
+                                        <h2 class="type">Community Member</h2>
+                                    </div>
+                                    
+                                </div>    
+
+                                <div class="card-content">
+                                    <p class = "description">"The advice on the site is clear and useful, even for people outside the college."</p>
+                                    <img src="img/gallery5.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+
+                                <div class = "topcard">
+                                    <div class="card-image">
+                                        <img src="img/defaultavatar.jpg" alt="" class="card-img">
+                                        
+                                    </div>
+                                    <div class = "persontext">
+                                        <h2 class="name">John Doe</h2>
+                                        <h2 class="type">Student</h2>
+                                    </div>
+                                    
+                                </div>    
+
+                                <div class="card-content">
+                                    <p class = "description">"Motivates me to stay consistent and help in the community."</p>
+                                    <img src="img/gallery1.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+
+                                <div class = "topcard">
+                                    <div class="card-image">
+                                        <img src="img/defaultavatar.jpg" alt="" class="card-img">
+                                        
+                                    </div>
+                                    <div class = "persontext">
+                                        <h2 class="name">John Doe</h2>
+                                        <h2 class="type">Staff</h2>
+                                    </div>
+                                    
+                                </div>    
+
+                                <div class="card-content">
+                                    <p class = "description"><br>"GreenCampus is a great initiative that encourages positive behaviour in a practical and engaging way."<br><br><br></p>
+                                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+
+                                <div class = "topcard">
+                                    <div class="card-image">
+                                        <img src="img/defaultavatar.jpg" alt="" class="card-img">
+                                        
+                                    </div>
+                                    <div class = "persontext">
+                                        <h2 class="name">John Doe</h2>
+                                        <h2 class="type">Student</h2>
+                                    </div>
+                                    
+                                </div>    
+
+                                <div class="card-content">
+                                    <p class = "description"><br>"I like how everything is in one place—events, tips, and challenges. It makes it easy to get involved."<br><br><br></p>
+                                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+
+                                <div class = "topcard">
+                                    <div class="card-image">
+                                        <img src="img/defaultavatar.jpg" alt="" class="card-img">
+                                        
+                                    </div>
+                                    <div class = "persontext">
+                                        <h2 class="name">John Doe</h2>
+                                        <h2 class="type">Student</h2>
+                                    </div>
+                                    
+                                </div>    
+
+                                <div class="card-content">
+                                    <p class = "description"><br>"The goal tracker is my favourite part. Seeing my streak go up motivates me to keep going."<br><br><br></p>
+                                
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+
+                                <div class = "topcard">
+                                    <div class="card-image">
+                                        <img src="img/defaultavatar.jpg" alt="" class="card-img">
+                                        
+                                    </div>
+                                    <div class = "persontext">
+                                        <h2 class="name">John Doe</h2>
+                                        <h2 class="type">Community Member</h2>
+                                    </div>
+                                    
+                                </div>    
+
+                                <div class="card-content">
+                                    <p class = "description">"I attended one of the events through GreenCampus and it was really well organised. It’s great to see the college involving the wider community."</p>
+                                    <img src="img/gallery2.png">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+
+                                <div class = "topcard">
+                                    <div class="card-image">
+                                        <img src="img/defaultavatar.jpg" alt="" class="card-img">
+                                        
+                                    </div>
+                                    <div class = "persontext">
+                                        <h2 class="name">Jane Doe</h2>
+                                        <h2 class="type">Staff</h2>
+                                    </div>
+                                    
+                                </div>    
+
+                                <div class="card-content">
+                                    <p class = "description"><br><br>"A well-thought-out platform that balances information with interaction."<br><br><br></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card swiper-slide">
+                            <div class="image-content">
+                                <span class="overlay"></span>
+
+                                <div class = "topcard">
+                                    <div class="card-image">
+                                        <img src="img/defaultavatar.jpg" alt="" class="card-img">
+                                        
+                                    </div>
+                                    <div class = "persontext">
+                                        <h2 class="name">Jane Doe</h2>
+                                        <h2 class="type">Staff</h2>
+                                    </div>
+                                    
+                                </div>    
+
+                                <div class="card-content">
+                                    <p class = "description">"It’s great to see students actively engaging with sustainability through interactive features rather than just reading information."</p>
+                                    <img src="img/gallery6.png">
+                                </div>
+                            </div>
+                        </div>
+
+                        
+                    </div>
+                    <div class="swiper-button-next swiper-navBtn"></div>
+                    <div class="swiper-button-prev swiper-navBtn"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+            
+
+
+            </div>
+            
+            
+            
+
+
+
+            <div class = "wavebrown">
+                <img src="img/wave-haikei2.svg" alt="">
+            </div>
+        </div>
+        
+        <div class ="example">
+            <div class = "wavebrown">
+                <img src="img/wave-haikei.svg" alt="">
+            </div>
+
+        </div>
+
+        
+        <div class ="contactcontainer">
+            
+            
+            
+            
+            <div class="contact-box">
+                <div class="contact-left">
+                    <h3>Send your request</h3>
+                    <form>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Name</label>
+                                <input type="text" placeholder="Your Name">
+                            </div>
+                            <div class="input-group">
+                                <label>Phone</label>
+                                <input type="text" placeholder="+44 123 456 7890">
+                            </div>
+                        </div>
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label>Email</label>
+                                <input type = "email" placeholder="email@example.com">
+                            </div>
+                            <div class="input-group">
+                                <label>Subject</label>
+                                <input type="text" placeholder="Enquiries ">
+                            </div>
+                        </div>
+
+                        <label>Message</label>
+                        <textarea rows="5" placeholder = "Your message here..."></textarea>
+
+                        <div class = "contactsend">
+                            <button type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+                <div class ="contact-right">
+                    <div class="details">
+                        <h3>Reach Us</h3>
+
+                        <table>
+                            <tr>
+                                <td>Email</td>
+                                <td>contactus@example.com</td>
+                            </tr>
+                            <tr>
+                                <td>Phone</td>
+                                <td>+44 0987 654321</td>
+                            </tr>
+                            <tr>
+                                <td>Address</td>
+                                <td>Lichfield Street <br> Burton-On-Trent <br> Staffordshire <br> UK <br> DE14 3RL </td> 
+                            </tr>
+                        </table>
+                        <div class = "contactmap">
+                            <h3>Find Us</h3>
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2412.2326543641484!2d-1.6304478000000002!3d52.8001437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a024776346265%3A0x1e14e88c557a62a1!2sBurton%20and%20South%20Derbyshire%20College!5e0!3m2!1sen!2suk!4v1776350592949!5m2!1sen!2suk" width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+
+                    </div>
+                    
+
+                </div>
+               
+                
+                
+            </div>
+            <div class ="footer1">
+                <div class="footerleft">
+                    <p>Policies</p>
+                    <p>&copy; 2026 GreenCampus. All rights reserved.</p>
+                </div>
+
+
+
+                <div class = "footerright">
+                    <i class='bx bxl-linkedin-square'></i>
+                    <i class='bx bxl-youtube' ></i>
+                    <i class='bx bxl-facebook-square' ></i>
+                    <i class='bx bxl-twitter' ></i>
+                </div>
+            </div>
+            
+            
+        </div>
+ 
+        <!--
+        <div class ="footer">
+            <p>&copy; 2026 GreenCampus. All rights reserved.</p>
+            <p>Accessibility</p>
+        </div>
+        -->
+
 
     </body>
+
+    <script src = "swiper-bundle.min.js"></script>
+
+    <script src = "script2.js"></script>
+
+
+
 </html>
