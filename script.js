@@ -1,3 +1,5 @@
+//coded by duncan
+
 //navigation dark and light mode
 const body = document.querySelector("body"),
       nav = document.querySelector("nav"),

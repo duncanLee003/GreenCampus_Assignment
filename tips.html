@@ -2,41 +2,69 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Tips - GreenCampus</title>
         <meta http-equiv="X-UA-Compatible" content ="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="style.css">
         <link href='https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined' rel="stylesheet">
+        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
     </head>
     <body>
+        <!-- duncan's nav bar-->
         <nav>
             <div class ="nav-bar">
-                <span class="logo"><a href="#">GreenCampus</a></span>
+                <i class='bx bx-leaf' style='color:#6b836e; font-size: 30px;'></i>
+                <i class='bx bx-menu sidebarOpen'></i>
+                <span class="logo navLogo"><a href="index.html">GreenCampus</a></span>
 
                 <div class ="menu">
+                    <div class="logo-toggle">
+                        <span class ="logo" ><a href="index.html">GreenCampus</a></span>
+                        <i class='bx bx-x siderbarClose'></i>
+                    </div>
+                        
                     <ul class="nav-links">
                         <li><a href = "index.html" >Home</a></li>
                         <li><a href = "events.html" >Events</a></li>
                         <li><a href = "tips.html" >Tips</a></li>
                         <li><a href = "resources.html" >Resources</a></li>
                         <li><a href = "aboutus.html" >About Us</a></li>
-
                     </ul> 
+                    
                 </div>
+                    
+                <div class="darkLight-searchBox">
+                    <div class = "dark-light">
+                        <i class='bx bx-moon moon'></i>
+                        <i class='bx bx-sun sun'></i>
+                    </div>
 
+                       <div class = "searchBox">
+                           <div class="searchToggle">
+                               <i class='bx bx-x cancel'></i>
+                               <i class='bx bx-search search'></i>
+                           </div>
+                               <div class="search-field">
+                                   <input type= "text" placeholder = "Search...">
+                                   <i class='bx bx-search'></i>
+                               </div>
+                            
+                        </div>
+                    </div>
 
                 </span>
-            </div>
 
             </div>
         </nav>
+
+        <script src = "script.js"></script>
 
         <!-- spacing so content isn't hidden behind nav bar-->
         <style>
             body {padding-top: 70px;}
         </style>
 
-        <!-- write code here!-->
+        <!-- Arek's code-->
         <div style="text-align: right; margin-top: 60px; margin-left: 260px; padding-right: 150px;">
             <h1 style="margin-bottom: 10px;">Saving Energy</h1>
             <p style="margin-top: 0; padding-bottom: 10px;">Here are some tips for saving energy:</p>
@@ -140,3 +168,6 @@
 <p> 5. Consider donating items that are still in good condition,</p>
 <p> such as clothing, furniture, and electronics, to reduce waste and help others.</p>
 </div>
+
+
+
