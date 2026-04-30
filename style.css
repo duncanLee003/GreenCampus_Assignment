@@ -1564,6 +1564,9 @@ body.dark .wavebrown {
         flex-direction: column;
     }
 
+    .container4 .wavebrown img{
+        display:none;
+    }
 }
 
 @media screen and (max-width: 850px){
