@@ -1,189 +1,491 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Tips - GreenCampus</title>
-        <meta http-equiv="X-UA-Compatible" content ="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="style.css">
-        <link href='https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined' rel="stylesheet">
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
-    </head>
-    <body>
-        <!-- duncan's nav bar-->
-        <nav>
-            <div class ="nav-bar">
-                <i class='bx bx-leaf' style='color:#6b836e; font-size: 30px;'></i>
-                <i class='bx bx-menu sidebarOpen'></i>
-                <span class="logo navLogo"><a href="index.html">GreenCampus</a></span>
- 
-                <div class ="menu">
-                    <div class="logo-toggle">
-                        <span class ="logo" ><a href="index.html">GreenCampus</a></span>
-                        <i class='bx bx-x siderbarClose'></i>
-                    </div>
-                       
-                    <ul class="nav-links">
-                        <li><a href = "index.html" >Home</a></li>
-                        <li><a href = "events.html" >Events</a></li>
-                        <li><a href = "tips.html" >Tips</a></li>
-                        <li><a href = "resources.html" >Resources</a></li>
-                        <li><a href = "aboutus.html" >About Us</a></li>
-                    </ul>
-                   
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tips - GreenCampus</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
+
+    <style>
+        /* ─────────────────────────────────────────
+           TIPS-PAGE-ONLY STYLES
+           All colours use the same CSS variables
+           already defined in style.css so dark mode
+           and the site palette work automatically.
+        ───────────────────────────────────────── */
+
+        body { padding-top: 70px; }
+
+        /* ── HERO ─────────────────────────────── */
+        .tips-hero {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            max-width: 1100px;
+            margin: 56px auto;
+            padding: 0 32px;
+        }
+
+        .tips-hero-text { flex: 1; }
+
+        .tips-hero-text h1 {
+            font-size: clamp(1.9rem, 4vw, 3rem);
+            font-weight: 600;
+            color: var(--text-color);
+            line-height: 1.2;
+            margin-bottom: 18px;
+        }
+
+        .tips-hero-text h1 span { color: var(--bannerbg); }
+
+        .tips-hero-text p {
+            font-size: 1rem;
+            color: var(--text-color);
+            line-height: 1.75;
+            max-width: 440px;
+            opacity: 0.85;
+        }
+
+        .tips-hero-img {
+            flex: 1;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.14);
+        }
+
+        .tips-hero-img img {
+            width: 100%;
+            height: 340px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .tips-hero-img:hover img { transform: scale(1.04); }
+
+        /* ── SECTION LABEL (identical to events.html) ── */
+        .section-label {
+            max-width: 1100px;
+            margin: 0 auto 18px;
+            padding: 0 32px;
+            font-size: 0.78rem;
+            font-weight: 600;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: var(--bannerbg);
+        }
+
+        /* ── TIP CARDS GRID ──────────────────── */
+        /* Echoes the original tipsLeft/tipsRight two-column split */
+        .tips-cards-wrap {
+            max-width: 1100px;
+            margin: 0 auto 64px;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            align-items: start;
+        }
+
+        .tips-col-left  { display: flex; flex-direction: column; }
+        .tips-col-right { display: flex; flex-direction: column; gap: 24px; }
+
+        /* Card base — matches events.html card aesthetic */
+        .tip-card {
+            background: var(--nav-color);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .tip-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 14px 36px rgba(0,0,0,0.13);
+        }
+
+        /* Green header strip — uses the exact same green as the home banner */
+        .tip-card-head {
+            background: var(--bannerbg);
+            padding: 18px 24px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        .tip-card-head i {
+            font-size: 30px;
+            color: rgba(255,255,255,0.9);
+            flex-shrink: 0;
+        }
+
+        .tip-card-head h3 {
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .tip-card-head small {
+            display: block;
+            color: rgba(255,255,255,0.68);
+            font-size: 0.75rem;
+            margin-top: 2px;
+        }
+
+        /* Card body */
+        .tip-card-body { padding: 20px 24px 24px; }
+
+        .tip-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            margin-bottom: 13px;
+        }
+
+        .tip-row:last-child { margin-bottom: 0; }
+
+        /* Numbered circle — same green as the banner */
+        .tip-num {
+            width: 26px;
+            height: 26px;
+            min-width: 26px;
+            border-radius: 50%;
+            background: var(--bannerbg);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 1px;
+        }
+
+        .tip-row p {
+            font-size: 0.91rem;
+            color: var(--text-color);
+            line-height: 1.65;
+        }
+
+        .tip-row p strong { color: var(--darkgreen); }
+        body.dark .tip-row p strong { color: #9acc96; }
+
+        /* ── RESPONSIVE ─────────────────────── */
+        @media (max-width: 1000px) {
+            /* Reuse the global breakpoint already in style.css
+               which handles .contact-box flex-direction: column */
+            .tips-hero           { flex-direction: column; gap: 28px; margin: 40px auto; }
+            .tips-hero-text p    { max-width: 100%; }
+            .tips-cards-wrap     { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 700px) {
+            .tips-hero           { padding: 0 20px; margin: 32px auto; }
+            .tips-hero-img img   { height: 240px; }
+            .tips-cards-wrap     { padding: 0 20px; margin-bottom: 40px; }
+            .section-label       { padding: 0 20px; }
+
+            /* Home page's container2 already handles its own wrap,
+               but on very small screens tighten it */
+            .recycleIcon, .bulbIcon, .treeIcon { font-size: 120px; }
+            .recycleInfo, .bulbInfo, .treeInfo  { font-size: 16px; }
+        }
+
+        @media (max-width: 480px) {
+            .tips-hero-text h1   { font-size: 1.7rem; }
+            .banner-content      { flex-direction: column; align-items: center; }
+        }
+
+        /* contact box stacks already at 1370px via style.css */
+        @media (max-width: 850px) {
+            .contactmap iframe   { width: 100%; }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ── NAV (identical to all pages) ── -->
+    <nav>
+        <div class="nav-bar">
+            <i class='bx bx-leaf' style='color:#6b836e; font-size: 30px;'></i>
+            <i class='bx bx-menu sidebarOpen'></i>
+            <span class="logo navLogo"><a href="index.html">GreenCampus</a></span>
+
+            <div class="menu">
+                <div class="logo-toggle">
+                    <span class="logo"><a href="index.html">GreenCampus</a></span>
+                    <i class='bx bx-x siderbarClose'></i>
                 </div>
-                   
-                <div class="darkLight-searchBox">
-                    <div class = "dark-light">
-                        <i class='bx bx-moon moon'></i>
-                        <i class='bx bx-sun sun'></i>
-                    </div>
- 
-                       <div class = "searchBox">
-                           <div class="searchToggle">
-                               <i class='bx bx-x cancel'></i>
-                               <i class='bx bx-search search'></i>
-                           </div>
-                               <div class="search-field">
-                                   <input type= "text" placeholder = "Search...">
-                                   <i class='bx bx-search'></i>
-                               </div>
-                           
-                        </div>
-                    </div>
- 
-                </span>
- 
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="events.html">Events</a></li>
+                    <li><a href="tips.html" class="active-page">Tips</a></li>
+                    <li><a href="resources.html">Resources</a></li>
+                    <li><a href="aboutus.html">About Us</a></li>
+                </ul>
             </div>
-        </nav>
- 
-        <script src = "script.js"></script>
- 
-        <!-- spacing so content isn't hidden behind nav bar-->
-        <style>
-            body {padding-top: 100px;}
-        </style>
 
-
-        <div class = "tipscontainer">
-            <div class = "tipsLeft">
-                <div class = "reducingWasteBox">
-                    <h3>Reducing Waste</h3>
-                    <p>Here are some ways to reduce waste:</p>
-                    <p>1. Reusable Alternatives: Switch to reusable versions of items like water bottles, shopping bags, and food containers to cut down on single-use plastics.</p>
-                    <p>2. Shop Smartly: Buy in bulk to reduce packaging waste, and choose products with minimal packaging</p>
-                    <p>3. Compost food scraps and yard waste to reduce landfill waste and create nutrient-rich soil.</p>
+            <div class="darkLight-searchBox">
+                <div class="dark-light">
+                    <i class='bx bx-moon moon'></i>
+                    <i class='bx bx-sun sun'></i>
+                </div>
+                <div class="searchBox">
+                    <div class="searchToggle">
+                        <i class='bx bx-x cancel'></i>
+                        <i class='bx bx-search search'></i>
+                    </div>
+                    <div class="search-field">
+                        <input type="text" placeholder="Search...">
+                        <i class='bx bx-search'></i>
+                    </div>
                 </div>
             </div>
-
-            <div class = "tipsRight">
-                <div class = "saveEnergyBox">
-                    <h3> Saving Energy</h3>
-                    <p>1. Turn off lights and electronics when not in use.</p>
-                    <p>2. Use energy-efficient appliances</p>
-                    <p>3. Unplug chargers and devices</p>
-                    <p>4. Use natural light during the day instead of artificial lighting</p>
-                    <p>5. Set your thermostat to an energy-efficient temperature when you are away from home</p>
-
-                </div>
-                <div class = "greenTravelBox">
-                    <h3>Greener Travel Options</h3>
-                    <p>1. Use public transportation or carpool when possible.</p>
-                </div>
-            </div>
-            
-            
         </div>
-        <div class ="contactcontainer">
-           
-           
-           
-           
-            <div class="contact-box">
-                <div class="contact-left">
-                    <h3>Send your request</h3>
-                    <form>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label>Name</label>
-                                <input type="text" placeholder="Your Name">
-                            </div>
-                            <div class="input-group">
-                                <label>Phone</label>
-                                <input type="text" placeholder="+44 123 456 7890">
-                            </div>
-                        </div>
-                        <div class="input-row">
-                            <div class="input-group">
-                                <label>Email</label>
-                                <input type = "email" placeholder="email@example.com">
-                            </div>
-                            <div class="input-group">
-                                <label>Subject</label>
-                                <input type="text" placeholder="Enquiries ">
-                            </div>
-                        </div>
- 
-                        <label>Message</label>
-                        <textarea rows="5" placeholder = "Your message here..."></textarea>
- 
-                        <div class = "contactsend">
-                            <button type="submit">Send</button>
-                        </div>
-                    </form>
-                </div>
-                <div class ="contact-right">
-                    <div class="details">
-                        <h3>Reach Us</h3>
- 
-                        <table>
-                            <tr>
-                                <td>Email</td>
-                                <td>contactus@example.com</td>
-                            </tr>
-                            <tr>
-                                <td>Phone</td>
-                                <td>+44 0987 654321</td>
-                            </tr>
-                            <tr>
-                                <td>Address</td>
-                                <td>Lichfield Street <br> Burton-On-Trent <br> Staffordshire <br> UK <br> DE14 3RL </td>
-                            </tr>
-                        </table>
-                        <div class = "contactmap">
-                            <h3>Find Us</h3>
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2412.2326543641484!2d-1.6304478000000002!3d52.8001437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a024776346265%3A0x1e14e88c557a62a1!2sBurton%20and%20South%20Derbyshire%20College!5e0!3m2!1sen!2suk!4v1776350592949!5m2!1sen!2suk%22 width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                        </div>
- 
-                    </div>
-                   
- 
-                </div>
-               
-               
-               
-            </div>
-            <div class ="footer1">
-                <div class="footerleft">
-                    <p>Policies</p>
-                    <p>&copy; 2026 GreenCampus. All rights reserved.</p>
-                </div>
- 
- 
- 
-                <div class = "footerright">
-                    <i class='bx bxl-linkedin-square'></i>
-                    <i class='bx bxl-youtube' ></i>
-                    <i class='bx bxl-facebook-square' ></i>
-                    <i class='bx bxl-twitter' ></i>
-                </div>
-            </div>
-           
-           
+    </nav>
+
+    <script src="script.js"></script>
+
+    <!-- ═══════════════════════════════════════════
+         HERO — text left, image right
+         (same two-column idea as home page's
+          firstbox / secondbox section)
+    ═══════════════════════════════════════════ -->
+    <div class="tips-hero">
+        <div class="tips-hero-text">
+            <h1>Sustainability <span>Tips</span></h1>
+            <p>Small, practical changes that add up to a big difference. From cutting down on waste to greener ways of getting around — here's how you can start living more sustainably today.</p>
         </div>
- 
+        <div class="tips-hero-img">
+            <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=900&q=80"
+                 alt="Hands holding a green plant">
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         GREEN ICON BANNER
+         Reuses the EXACT same classes and structure
+         as the home page's container2 / banner-content
+         section — so the style is already in style.css
+    ═══════════════════════════════════════════ -->
+    <div class="container2">
+        <section class="banner-content">
+
+            <div class="firstbannerCol">
+                <div class="recycleIcon">
+                    <i class='bx bx-recycle' style="color:#ffffff" alt="recycling icon"></i>
+                </div>
+                <div class="recycleInfo">
+                    <p>Reduce waste by choosing reusables, composting scraps, and buying in bulk to cut down on packaging.</p>
+                </div>
+            </div>
+
+            <div class="secondbannerCol">
+                <div class="bulbIcon">
+                    <i class='bx bx-bulb' style="color:#ffffff" alt="energy bulb icon"></i>
+                </div>
+                <div class="bulbInfo">
+                    <p>Save energy by switching off lights, unplugging idle devices, and making the most of natural daylight.</p>
+                </div>
+            </div>
+
+            <div class="thirdbannerCol">
+                <div class="treeIcon">
+                    <i class='bx bx-bus' style="color:#ffffff" alt="bus icon"></i>
+                </div>
+                <div class="treeInfo">
+                    <p>Travel greener by using public transport, carpooling, cycling, or walking whenever possible.</p>
+                </div>
+            </div>
+
+        </section>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         DETAILED TIPS CARDS
+         Two-column layout mirroring the original
+         tipsLeft (Reducing Waste) / tipsRight
+         (Saving Energy + Greener Travel) structure
+    ═══════════════════════════════════════════ -->
+    <div class="section-label">All Tips</div>
+
+    <div class="tips-cards-wrap">
+
+        <!-- LEFT COLUMN: Reducing Waste (tall card) -->
+        <div class="tips-col-left">
+            <div class="tip-card">
+                <div class="tip-card-head">
+                    <i class='bx bx-recycle'></i>
+                    <div>
+                        <h3>Reducing Waste</h3>
+                        <small>Cut down on what goes to landfill</small>
+                    </div>
+                </div>
+                <div class="tip-card-body">
+                    <div class="tip-row">
+                        <div class="tip-num">1</div>
+                        <p><strong>Reusable alternatives</strong> — switch to reusable water bottles, shopping bags, and food containers to cut single-use plastics.</p>
+                    </div>
+                    <div class="tip-row">
+                        <div class="tip-num">2</div>
+                        <p><strong>Shop smartly</strong> — buy in bulk to reduce packaging waste, and choose products with minimal packaging where possible.</p>
+                    </div>
+                    <div class="tip-row">
+                        <div class="tip-num">3</div>
+                        <p><strong>Compost food scraps</strong> and yard waste to reduce landfill waste and create nutrient-rich soil for your garden.</p>
+                    </div>
+                    <div class="tip-row">
+                        <div class="tip-num">4</div>
+                        <p><strong>Repair before replacing</strong> — fix broken items where possible instead of throwing them away.</p>
+                    </div>
+                    <div class="tip-row">
+                        <div class="tip-num">5</div>
+                        <p><strong>Buy second-hand</strong> — charity shops, swap events, and online marketplaces give items a longer life and reduce demand for new production.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: Saving Energy + Greener Travel (stacked) -->
+        <div class="tips-col-right">
+
+            <div class="tip-card">
+                <div class="tip-card-head">
+                    <i class='bx bx-bulb'></i>
+                    <div>
+                        <h3>Saving Energy</h3>
+                        <small>Lower your carbon footprint at home</small>
+                    </div>
+                </div>
+                <div class="tip-card-body">
+                    <div class="tip-row">
+                        <div class="tip-num">1</div>
+                        <p><strong>Turn off lights and electronics</strong> when not in use — it adds up more than you'd think.</p>
+                    </div>
+                    <div class="tip-row">
+                        <div class="tip-num">2</div>
+                        <p><strong>Use energy-efficient appliances</strong> with an A-rating when it's time to upgrade household items.</p>
+                    </div>
+                    <div class="tip-row">
+                        <div class="tip-num">3</div>
+                        <p><strong>Unplug chargers and devices</strong> on standby — they still draw power even when not in use.</p>
+                    </div>
+                    <div class="tip-row">
+                        <div class="tip-num">4</div>
+                        <p><strong>Use natural light</strong> during the day instead of artificial lighting wherever you can.</p>
+                    </div>
+                    <div class="tip-row">
+                        <div class="tip-num">5</div>
+                        <p><strong>Set your thermostat</strong> to an energy-efficient temperature when you are away from home.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tip-card">
+                <div class="tip-card-head">
+                    <i class='bx bx-bus'></i>
+                    <div>
+                        <h3>Greener Travel Options</h3>
+                        <small>Move around with fewer emissions</small>
+                    </div>
+                </div>
+                <div class="tip-card-body">
+                    <div class="tip-row">
+                        <div class="tip-num">1</div>
+                        <p><strong>Use public transport or carpool</strong> when possible — buses and trains dramatically cut per-person emissions.</p>
+                    </div>
+                    <div class="tip-row">
+                        <div class="tip-num">2</div>
+                        <p><strong>Walk or cycle</strong> for short journeys — zero emissions and great for your health too.</p>
+                    </div>
+                    <div class="tip-row">
+                        <div class="tip-num">3</div>
+                        <p><strong>Combine errands</strong> into single trips to cut the number of journeys you make by car.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         CONTACT + FOOTER
+         Exact same HTML as every other page
+    ═══════════════════════════════════════════ -->
+    <div class="contactcontainer">
+        <div class="contact-box">
+            <div class="contact-left">
+                <h3>Send your request</h3>
+                <form>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Name</label>
+                            <input type="text" placeholder="Your Name">
+                        </div>
+                        <div class="input-group">
+                            <label>Phone</label>
+                            <input type="text" placeholder="+44 123 456 7890">
+                        </div>
+                    </div>
+                    <div class="input-row">
+                        <div class="input-group">
+                            <label>Email</label>
+                            <input type="email" placeholder="email@example.com">
+                        </div>
+                        <div class="input-group">
+                            <label>Subject</label>
+                            <input type="text" placeholder="Enquiries">
+                        </div>
+                    </div>
+                    <label>Message</label>
+                    <textarea rows="5" placeholder="Your message here..."></textarea>
+                    <div class="contactsend">
+                        <button type="submit">Send</button>
+                    </div>
+                </form>
+            </div>
+            <div class="contact-right">
+                <div class="details">
+                    <h3>Reach Us</h3>
+                    <table>
+                        <tr>
+                            <td>Email</td>
+                            <td>contactus@example.com</td>
+                        </tr>
+                        <tr>
+                            <td>Phone</td>
+                            <td>+44 0987 654321</td>
+                        </tr>
+                        <tr>
+                            <td>Address</td>
+                            <td>Lichfield Street <br> Burton-On-Trent <br> Staffordshire <br> UK <br> DE14 3RL</td>
+                        </tr>
+                    </table>
+                    <div class="contactmap">
+                        <h3>Find Us</h3>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2412.2326543641484!2d-1.6304478000000002!3d52.8001437!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487a024776346265%3A0x1e14e88c557a62a1!2sBurton%20and%20South%20Derbyshire%20College!5e0!3m2!1sen!2suk!4v1776350592949!5m2!1sen!2suk"
+                            width="600" height="250" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer1">
+            <div class="footerleft">
+                <p>Policies</p>
+                <p>&copy; 2026 GreenCampus. All rights reserved.</p>
+            </div>
+            <div class="footerright">
+                <i class='bx bxl-linkedin-square'></i>
+                <i class='bx bxl-youtube'></i>
+                <i class='bx bxl-facebook-square'></i>
+                <i class='bx bxl-twitter'></i>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
-         <h1></h1>
- 
-    </body>
