@@ -50,7 +50,7 @@ body.addEventListener("click" , e =>{
 
 
 
-//script for resources
+//script for resources page
 let unlockedTitles = [];
 let selectedTitle = "";
 
@@ -84,6 +84,7 @@ function gainXP(amount) {
   saveProgress();
 }
 
+
 const milestones = [
   { percent: 0, message: "A new start!" },
   { percent: 25, message: "Keep going!" },
@@ -104,6 +105,8 @@ function updateUI() {
 
   updateXPMessage(percentage);
 }
+
+//divides progress bar
 
 function createSegments() {
   const container = document.querySelector(".progress-segments");
@@ -137,6 +140,7 @@ function showReward(level) {
   if (level === 2) newTitle = "🎉 Beginner";
   else if (level === 5) newTitle = "🔥 Pro";
   else if (level === 10) newTitle = "👑 Elite";
+  //can add more rewards later using elifs
 
   if (newTitle && !unlockedTitles.includes(newTitle)) {
     unlockedTitles.push(newTitle);
@@ -149,6 +153,7 @@ function showReward(level) {
   }
 }
 
+//temporary save/load system using local storage
 
 function saveProgress() {
   localStorage.setItem("xp", xp);
@@ -311,7 +316,7 @@ function changeTitle() {
 
 }
 
-
+// prebuilt challenges REMINDER TO ADD COMMA AFTER EACH OBJECT
 
 const defaultChallenges = [
   {
@@ -451,6 +456,7 @@ function renderChallenges() {
     filter = filterElement.value;
   }
 
+  //filters and types of challenges
   challenges.forEach((challenge, index) => {
 
     const challengeType = challenge.type.toLowerCase();
@@ -491,6 +497,8 @@ function renderChallenges() {
 }
 
 let tempChallenge = null;
+
+//personal challenges to be created
 
 function addChallenge() {
   tempChallenge = {};
@@ -606,6 +614,8 @@ function isQuizLocked() {
   return quizCompletedDate === today;
 }
 
+
+//correct numbers are the numbers in the answers array
 const quiz = [
   {
     question: "What does recycling help reduce?",

@@ -9,16 +9,11 @@
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel="stylesheet">
 
     <style>
-        /* ─────────────────────────────────────────
-           TIPS-PAGE-ONLY STYLES
-           All colours use the same CSS variables
-           already defined in style.css so dark mode
-           and the site palette work automatically.
-        ───────────────────────────────────────── */
+  
 
         body { padding-top: 70px; }
 
-        /* ── HERO ─────────────────────────────── */
+
         .tips-hero {
             display: flex;
             align-items: center;
@@ -65,7 +60,7 @@
 
         .tips-hero-img:hover img { transform: scale(1.04); }
 
-        /* ── SECTION LABEL (identical to events.html) ── */
+
         .section-label {
             max-width: 1100px;
             margin: 0 auto 18px;
@@ -77,8 +72,7 @@
             color: var(--bannerbg);
         }
 
-        /* ── TIP CARDS GRID ──────────────────── */
-        /* Echoes the original tipsLeft/tipsRight two-column split */
+
         .tips-cards-wrap {
             max-width: 1100px;
             margin: 0 auto 64px;
@@ -92,7 +86,7 @@
         .tips-col-left  { display: flex; flex-direction: column; }
         .tips-col-right { display: flex; flex-direction: column; gap: 24px; }
 
-        /* Card base — matches events.html card aesthetic */
+
         .tip-card {
             background: var(--nav-color);
             border-radius: 14px;
@@ -106,7 +100,7 @@
             box-shadow: 0 14px 36px rgba(0,0,0,0.13);
         }
 
-        /* Green header strip — uses the exact same green as the home banner */
+  
         .tip-card-head {
             background: var(--bannerbg);
             padding: 18px 24px;
@@ -135,7 +129,7 @@
             margin-top: 2px;
         }
 
-        /* Card body */
+      
         .tip-card-body { padding: 20px 24px 24px; }
 
         .tip-row {
@@ -147,7 +141,7 @@
 
         .tip-row:last-child { margin-bottom: 0; }
 
-        /* Numbered circle — same green as the banner */
+  
         .tip-num {
             width: 26px;
             height: 26px;
@@ -172,10 +166,9 @@
         .tip-row p strong { color: var(--darkgreen); }
         body.dark .tip-row p strong { color: #9acc96; }
 
-        /* ── RESPONSIVE ─────────────────────── */
+ 
         @media (max-width: 1000px) {
-            /* Reuse the global breakpoint already in style.css
-               which handles .contact-box flex-direction: column */
+
             .tips-hero           { flex-direction: column; gap: 28px; margin: 40px auto; }
             .tips-hero-text p    { max-width: 100%; }
             .tips-cards-wrap     { grid-template-columns: 1fr; }
@@ -187,8 +180,7 @@
             .tips-cards-wrap     { padding: 0 20px; margin-bottom: 40px; }
             .section-label       { padding: 0 20px; }
 
-            /* Home page's container2 already handles its own wrap,
-               but on very small screens tighten it */
+
             .recycleIcon, .bulbIcon, .treeIcon { font-size: 120px; }
             .recycleInfo, .bulbInfo, .treeInfo  { font-size: 16px; }
         }
@@ -198,7 +190,7 @@
             .banner-content      { flex-direction: column; align-items: center; }
         }
 
-        /* contact box stacks already at 1370px via style.css */
+
         @media (max-width: 850px) {
             .contactmap iframe   { width: 100%; }
         }
@@ -207,7 +199,7 @@
 
 <body>
 
-    <!-- ── NAV (identical to all pages) ── -->
+   
     <nav>
         <div class="nav-bar">
             <i class='bx bx-leaf' style='color:#6b836e; font-size: 30px;'></i>
@@ -249,11 +241,7 @@
 
     <script src="script.js"></script>
 
-    <!-- ═══════════════════════════════════════════
-         HERO — text left, image right
-         (same two-column idea as home page's
-          firstbox / secondbox section)
-    ═══════════════════════════════════════════ -->
+   
     <div class="tips-hero">
         <div class="tips-hero-text">
             <h1>Sustainability <span>Tips</span></h1>
@@ -265,12 +253,7 @@
         </div>
     </div>
 
-    <!-- ═══════════════════════════════════════════
-         GREEN ICON BANNER
-         Reuses the EXACT same classes and structure
-         as the home page's container2 / banner-content
-         section — so the style is already in style.css
-    ═══════════════════════════════════════════ -->
+
     <div class="container2">
         <section class="banner-content">
 
@@ -304,17 +287,12 @@
         </section>
     </div>
 
-    <!-- ═══════════════════════════════════════════
-         DETAILED TIPS CARDS
-         Two-column layout mirroring the original
-         tipsLeft (Reducing Waste) / tipsRight
-         (Saving Energy + Greener Travel) structure
-    ═══════════════════════════════════════════ -->
+ 
     <div class="section-label">All Tips</div>
 
     <div class="tips-cards-wrap">
 
-        <!-- LEFT COLUMN: Reducing Waste (tall card) -->
+  
         <div class="tips-col-left">
             <div class="tip-card">
                 <div class="tip-card-head">
@@ -349,7 +327,7 @@
             </div>
         </div>
 
-        <!-- RIGHT COLUMN: Saving Energy + Greener Travel (stacked) -->
+    
         <div class="tips-col-right">
 
             <div class="tip-card">
@@ -411,10 +389,7 @@
         </div>
     </div>
 
-    <!-- ═══════════════════════════════════════════
-         CONTACT + FOOTER
-         Exact same HTML as every other page
-    ═══════════════════════════════════════════ -->
+    
     <div class="contactcontainer">
         <div class="contact-box">
             <div class="contact-left">

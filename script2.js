@@ -1,4 +1,4 @@
-//coded by duncan
+//coded by duncan merge with main script later
 
 var swiper = new Swiper(".slide-content", {
     slidesPerView: 3,
